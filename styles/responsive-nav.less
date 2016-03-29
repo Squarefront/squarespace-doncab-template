@@ -1,0 +1,448 @@
+
+/* RESPONSIVE NAV STYLES
+-------------------------------------------------*/
+
+// Mobile menu button and site title / logo
+.mobile-nav-container {
+  display: none;
+}
+
+@media only screen and (max-width: 1024px) {
+
+  // Kills the background color on tapped links
+  .touch-styles {
+    a,
+    label {
+      -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
+      -moz-tap-highlight-color: rgba(0,0,0,0) !important;
+      tap-highlight-color: rgba(0,0,0,0) !important;
+    }
+  }
+
+}
+
+@media only screen and (max-width: 768px) {
+
+  // mobile fonts and tweaks
+
+  .mobile-branding-wrapper {
+
+    .mobile-site-title {
+      .tweak-mobile-bar-branding-site-title-font;
+
+      a {
+        color: @tweak-mobile-bar-branding-site-title-color;
+        .transition (color 300ms cubic-bezier(.33, 0, .2, 1));
+        text-decoration: none;
+      }
+
+      .mobile-menu-open & a { color: @tweak-mobile-menu-branding-site-title-color; }
+    }
+
+    .mobile-logo-image {
+      a {
+        max-width: @tweak-mobile-bar-branding-logo-width;
+        display: block;
+      }
+
+      img {
+        max-width: 100%;
+        display: block;
+      }
+    }
+
+    .mobile-site-tagline {
+      .tweak-mobile-bar-site-tagline-font;
+      color: @tweak-mobile-bar-site-tagline-color;
+      .transition (color 300ms cubic-bezier(.33, 0, .2, 1));
+      margin-top: @tweak-mobile-bar-site-tagline-spacing;
+
+      .mobile-menu-open & { color: @tweak-mobile-menu-site-tagline-color; }
+    }
+  }
+
+  .tweak-mobile-bar-site-tagline-position-hide .mobile-site-tagline { display: none; }
+  .tweak-mobile-bar-site-tagline-position-w-branding .mobile-site-tagline { display: block; }
+
+  .mobile-primary-nav-links {
+    a, .folder-toggle-label {
+      .tweak-mobile-overlay-menu-primary-font;
+      color: @tweak-mobile-overlay-menu-primary-text-color;
+    }
+    .Icon {
+      stroke: @tweak-mobile-overlay-menu-primary-text-color;
+    }
+    .Icon--caretSmall--right {
+      width: 1em;
+      height: .5em;
+      .transform(rotate(90deg));
+    }
+  }
+
+  .mobile-secondary-nav-links {
+    a, .folder-toggle-label {
+      .tweak-mobile-overlay-menu-secondary-font;
+      color: @tweak-mobile-overlay-menu-secondary-text-color;
+    }
+    .Icon {
+      stroke: @tweak-mobile-overlay-menu-secondary-text-color;
+    }
+    .Icon--caretSmall--right {
+      width: 1em;
+      height: .5em;
+      .transform(rotate(90deg));
+    }
+  }
+
+  // mobile structure
+  .mobile-bar-wrapper {
+    z-index: 10002;
+    position: relative;
+    width: 100vw;
+    .display-flex;
+    // .transition (background-color 300ms cubic-bezier(.33, 0, .2, 1));
+    .justify-content(space-between);
+    // background-color: @bgColor;
+
+    .mobile-menu-open & {
+      // background-color: @tweak-mobile-overlay-menu-color;
+      // .transition (background-color 300ms cubic-bezier(.33, 0, .2, 1));
+    }
+  }
+
+  .mobile-branding-wrapper {
+    display: block;
+    .flex-grow(0);
+    .align-self(center);
+
+    a {
+      display: block;
+    }
+
+    .tweak-mobile-bar-branding-position-left & {
+      .flex-order(0);
+      text-align: left;
+    }
+    .tweak-mobile-bar-branding-position-right & {
+      .flex-order(1);
+      text-align: right;
+    }
+  }
+
+  .mobile-nav-toggle-label {
+    .border-box;
+    .no-select;
+    .flex-grow(0);
+    .align-self(center);
+
+    display: block;
+    cursor: pointer;
+
+    .Icon--close {
+      display: none;
+      stroke: @tweak-mobile-bar-menu-icon-color;
+      .transition (color 300ms cubic-bezier(.33, 0, .2, 1));
+    }
+    .Icon--hamburger {
+      display: block;
+      margin: 0 0 0 auto;
+      stroke: @tweak-mobile-bar-menu-icon-color;
+      .transition (color 300ms cubic-bezier(.33, 0, .2, 1));
+    }
+
+    .tweak-mobile-bar-branding-position-left & {
+      .flex-order(1);
+      text-align: right;
+    }
+    .tweak-mobile-bar-branding-position-right & {
+      .flex-order(0);
+      text-align: left;
+    }
+
+  }
+
+  // mobile menu overlay
+
+  #overlayNav {
+    position: absolute;
+    z-index: 10001;
+    width: 0%;
+    // height: 100%;
+    text-align: center;
+    overflow: hidden;
+    pointer-events: none;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 100%;
+    // need delay to avoid animation of left postion in hidden state
+    -webkit-transition-delay: 300ms;
+    -moz-transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    transition-delay: 300ms;
+    // background-color: @tweak-mobile-overlay-menu-color;
+    // .transition (background-color 300ms cubic-bezier(.33, 0, .2, 1));
+  }
+
+  .overlay-nav-wrapper {
+    .border-box;
+    .scale(1, 1);
+    .transition2 (transform 300ms cubic-bezier(.33, 0, .2, 1), opacity 300ms cubic-bezier(.33, 0, .2, 1));
+    display: table-cell;
+    width: 100vw;
+    height: 100vh;
+    vertical-align: middle;
+    padding: 13vh 16vw;
+    // background-color: @tweak-mobile-overlay-menu-color;
+    opacity: 0;
+  }
+
+  .mobile-primary-nav-wrapper + .mobile-secondary-nav-wrapper {
+    margin-top: @mobileMenuVerticalSpacing;
+  }
+
+
+  /* Container around entire responsive-nav.block */
+
+  // Defaults
+  .mobile-nav-container {
+    .display-flex;
+    .flex-direction(column);
+    // .justify-content(space-between);
+    height: auto;
+    background-color: @bgColor;
+    // .transition (background-color 300ms cubic-bezier(.33, 0, .2, 1));
+    z-index: 10002;
+
+    .tweak-mobile-bar-position-top-fixed & {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+
+      #overlayNav {
+        position: absolute;
+      }
+    }
+
+    .tweak-mobile-bar-position-bottom-fixed & {
+      position: fixed;
+      bottom: 0;
+      width: 100vw;
+
+      #overlayNav {
+        .flex-order(1);
+      }
+      .mobile-bar-wrapper {
+        .flex-order(2);
+      }
+    }
+  }
+
+  // force transparent mobile bar background
+
+  .tweak-mobile-bar-position-top-fixed:not(.mobile-menu-open).tweak-transparent-fixed-mobile-bar,
+  .tweak-mobile-bar-position-bottom-fixed:not(.mobile-menu-open).tweak-transparent-fixed-mobile-bar {
+    .mobile-bar-wrapper,
+    .mobile-nav-container {
+      background-color: transparent;
+    }
+  }
+
+  // When menu is open
+  body.mobile-menu-open .mobile-nav-container {
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 10002;
+
+    background-color: @tweak-mobile-overlay-menu-color;
+    .transition (background-color 300ms cubic-bezier(.33, 0, .2, 1));
+
+    .mobile-bar-wrapper {
+      background-color: transparent;
+    }
+  }
+
+
+  // When menu is open and mobile bar is fixed bottom
+  body.mobile-menu-open.tweak-mobile-bar-position-bottom-fixed {
+    .mobile-nav-container {
+      #overlayNav {
+        position: absolute;
+      }
+
+      .mobile-bar-wrapper {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+  }
+
+  // When menu is open and mobile bar is fixed top
+  body.mobile-menu-open.tweak-mobile-bar-position-top-fixed {
+    .mobile-nav-container {
+
+      #overlayNav {
+
+      }
+
+      .mobile-bar-wrapper {
+
+      }
+    }
+  }
+
+  // overlay folder defaults
+
+  #overlayNav {
+
+    .folder {
+      position: relative;
+    }
+
+    .svg .folder-toggle-label { margin-right: -1em; }
+
+    // folder is closed
+    .no-svg & {
+      .folder-toggle-label:after {
+        content: '\25BE';
+        width: 1em;
+        display: inline-block;
+      }
+    }
+
+    .subnav {
+      max-height: 0;
+      overflow: hidden;
+      position: relative;
+      .border-box;
+      .scale(1, 0);
+      .transform-origin(1em, 0);
+      .transition2 (transform 300ms ease-in-out, max-height 300ms ease-in-out);
+
+      .folder-link:last-child {
+        // margin-bottom: @mobileMenuVerticalSpacing;
+      }
+    }
+
+    // folder is open
+    .folder-toggle-box:checked {
+
+      .no-svg & {
+        ~ .folder-toggle-label:after {
+          .transform(rotate(-180deg));
+          .transform-origin(center, center);
+        }
+      }
+
+      ~ .folder-toggle-label .Icon--caretSmall--right {
+        .transform(rotate(-90deg));
+      }
+
+      ~ .subnav {
+         max-height: 100vh;
+         .scale(1, 1);
+      }
+    }
+  }
+
+  // Changing height of body to prevent overflow on menu open
+  body:not(.mobile-menu-open) {
+    // .transition (height 0ms linear 300ms);
+    -webkit-transition-delay: 300ms;
+    -moz-transition-delay: 300ms;
+    -o-transition-delay: 300ms;
+    transition-delay: 300ms;
+    // height: 100%;
+  }
+
+  body.mobile-menu-open {
+    overflow: hidden;
+    position: relative;
+
+    .transition (height 0ms linear);
+    height: 100vh;
+    // .transition (height 0ms linear);
+    .overflow-wrapper {
+      // position: fixed;
+      // width: 100%;
+      height: 100%;
+      overflow-y: hidden;
+    }
+
+    &.tweak-mobile-bar-position-standard .mobile-bar-wrapper {
+      // position: absolute;
+      // top: 0;
+      // width: 100vw;
+    }
+  }
+
+  // hamburger has been tapped
+
+  #mobileNavToggle:checked {
+
+    ~ #overlayNav {
+      opacity: 1;
+      width: 100%;
+      visibility: visible;
+      pointer-events: auto;
+      left: 0;
+      .transition (left 0ms linear);
+
+      .overlay-nav-wrapper {
+        overflow-x: hidden;
+        overflow-y: auto;
+        .scale(1, 1);
+        opacity: 1;
+      }
+    }
+
+    // toggle hamburger --> close icon
+    ~ .mobile-bar-wrapper .mobile-nav-toggle-label {
+
+      .Icon--close {
+        display: block;
+        margin: 0 0 0 auto;
+        stroke: @tweak-mobile-menu-menu-icon-color;
+      }
+      .Icon--hamburger { display: none; }
+    }
+
+    ~ .site-container {
+      // overflow: hidden;
+      // height: 100%;
+    }
+  }
+
+  .tweak-mobile-bar-top-fixed #mobileNavToggle:checked ~ .mobile-bar-wrapper {
+    position: relative;
+    // background-color: @tweak-mobile-overlay-menu-color;
+  }
+
+  // Checkbox hack for android < 4.1.2
+  // This hack was recently isolated as a problem
+
+  body {
+    -webkit-animation: bugfix infinite 1s;
+  }
+
+  @-webkit-keyframes bugfix {
+    from { padding: 0; }
+    to { padding: 0; }
+  }
+
+}
+
+@media only screen and (max-width: 640px) {
+
+  // Collapse sqs layouts
+  @import 'sqs-grid-breaker';
+
+}
+
+
+
+

@@ -1,0 +1,16 @@
+
+{.var @pageThumb collection.mainImage}
+
+{.section collection}
+  <div sqs-controller="Template.Controllers.BannerController" class="page-banner-wrapper {.if @pageThumb}page-banner-has-image{.end}" {.if @pageThumb}data-suggested-bg-color-thumbnail="#{@pageThumb.colorData.suggestedBgColor}"{.end} data-collection-id="{collection.id}" data-edit-main-image="Background">
+
+    <div class="page-banner-image-container collection-thumbnail-image-container hide-collection-image">
+      <img class="page-banner-image js-page-banner-image loading" {@pageThumb|image-meta} data-load="false" />
+    </div>
+
+    <div class="page-text-wrapper hide clearfix">
+      <h1 class="page-title"><span data-content-field="title">{title}</span></h1>
+      <div class="page-description" data-content-field="description">{description}</div>
+    </div>
+  </div>
+{.end}

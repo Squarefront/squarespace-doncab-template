@@ -1,0 +1,619 @@
+
+/* PROJECT STYLES
+-------------------------------------------------*/
+
+
+.collection-type-project {
+
+  .site-page {
+    max-width: 100%;
+  }
+
+  &.show-project-banner .site-page {
+    margin-top: 0;
+  }
+
+  // Page Banner Wrapper Spacing
+
+  &.project-banner-spacing-small.show-project-banner .page-banner-wrapper {
+    margin-bottom: 5vw;
+  }
+
+  &.project-banner-spacing-medium.show-project-banner .page-banner-wrapper {
+    margin-bottom: 7vw;
+  }
+
+  &.project-banner-spacing-large.show-project-banner .page-banner-wrapper {
+    margin-bottom: 10vw;
+  }
+
+  &.project-banner-spacing-custom.show-project-banner .page-banner-wrapper {
+    margin-bottom: @projectBannerSpacing;
+  }
+
+  // Project Title and Project Description defaults
+  // Hide project slide captions by default until Show Project Captions is checked
+
+  .project-slide-description-wrapper {
+    display: none;
+    visibility: hidden;
+  }
+
+  &.show-project-captions .project-slide-description-wrapper {
+    display: block;
+    visibility: visible;
+  }
+
+  // Project Image Title, Caption
+
+  .project-slide-description-body {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0px; // fallback to ensure text never touches anything
+  }
+
+  @media screen and (min-width: 769px) and (max-width: 1440px) {
+    .project-slide-description-body {
+      max-width: 80vw;
+    }
+  }
+
+  @media screen and (min-width: 1441px) and (max-width: 1800px) {
+    .project-slide-description-body {
+      max-width: 65vw;
+    }
+  }
+
+  @media screen and (min-width: 1801px) {
+    .project-slide-description-body {
+      max-width: 60vw;
+    }
+  }
+
+  .project-slide-description-title {
+    .image-caption-title-font;
+    color: @imageCaptionTitleColor;
+    max-width: 32em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+  }
+
+  // add bottom margin to title only when a description is present
+  .has-description-text .project-slide-description-title {
+    margin-bottom: @projectCaptionTitleSpacing;
+  }
+
+  .project-slide-description-text {
+    .image-caption-body-font;
+    color: @imageCaptionBodyColor;
+    max-width: 32em;
+    margin-left: auto;
+    margin-right: auto;
+
+    p:last-child { margin-bottom: 0; }
+  }
+
+  // manage project image caption and description max-width
+  // based on viewport as a fallback to ems above
+
+  .project-slide-description-title,
+  .project-slide-description-text {
+    @media screen and (max-width: 1440px) { max-width: 36vw; }
+    @media screen and (max-width: 1280px) { max-width: 46vw; }
+    @media screen and (max-width: 768px) { max-width: 66vw; }
+    @media screen and (max-width: 640px) { max-width: 96vw; }
+  }
+
+  // Scale project slide caption title and body font
+
+  &.scale-image-caption-title-font .project-slide-description-title {
+    .scale-font (@imageCaptionTitleMin, @image-caption-title-font-font-size, 1920px);
+  }
+
+  &.scale-image-caption-body-font .project-slide-description-text {
+    .scale-font (@imageCaptionBodyMin, @image-caption-body-font-font-size, 1920px);
+  }
+
+  // Collapse Landscape Spacing tweak
+  &.collapse-landscape-spacing:not(.show-project-captions) {
+    .project-slide-landscape + .project-slide-landscape {
+      // applied via js instead
+    }
+  }
+
+}
+
+/* Default, vertical stacked, captions below project styles
+ ********************************************/
+.project-slide {
+  .display-flex(flex);
+  .flex-direction(column);
+}
+
+.project-slide:not(:last-child) {
+  .project-image-spacing-small & {
+    margin-bottom: 5vw;
+  }
+  .project-image-spacing-medium & {
+    margin-bottom: 7vw;
+  }
+  .project-image-spacing-large & {
+    margin-bottom: 10vw;
+  }
+  .project-image-spacing-custom & {
+    margin-bottom: @projectImageSpacing;
+  }
+}
+
+.project-slide-video-wrapper {
+  margin: auto;
+  width: 100%;
+}
+
+.project-slide-image-wrapper {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  margin: auto;
+  line-height: 0;
+  text-align: center;
+
+  &.not-ready {
+    -webkit-animation: colorPulse 1000ms infinite alternate;
+    animation: colorPulse 1000ms infinite alternate;
+    // magic number container sizing for now
+    min-height: 50vh;
+    min-width: 50vw;
+  }
+
+  @media screen and (min-width: 641px) {
+    .project-slide-pano & {  }
+    .project-slide-landscape & {  }
+    .project-slide-portrait & { max-width: 65%; }
+    .project-slide-square & { max-width: 65%; }
+  }
+
+  @media screen and (max-width: 640px) {
+    .project-slide-pano & {  }
+    .project-slide-landscape & {  }
+    .project-slide-portrait & { max-width: 85%; }
+    .project-slide-square & { max-width: 85%; }
+  }
+}
+
+.project-slide-image-wrapper::after,
+.project-slide-video-wrapper::after {
+  content: ' ';
+  display: block;
+  height: 0px;
+  clear: both;
+  visibility: hidden;
+}
+
+.project-slide-image {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  line-height: 0;
+}
+
+.project-slide-description-wrapper {
+  margin: auto;
+}
+
+
+/* Image Alignment Defaults */
+
+.project-image-alignment-left,
+.project-image-alignment-right {
+
+  .project-slide {
+
+    .display-flex(flex);
+    .justify-content(space-between);
+    .flex-direction(row);
+    .align-items(center);
+
+    max-width: 100%;
+  }
+}
+
+.project-image-alignment-left .project-slide.project-slide-has-no-description .project-slide-image-wrapper,
+.project-image-alignment-left .project-slide.project-slide-has-no-description .project-slide-video-wrapper {
+  margin-left: 0;
+}
+
+.project-image-alignment-right .project-slide.project-slide-has-no-description .project-slide-image-wrapper,
+.project-image-alignment-right .project-slide.project-slide-has-no-description .project-slide-video-wrapper {
+  margin-right: 0;
+}
+
+
+/* Image Alignment Left */
+
+.collection-type-project.project-image-alignment-left {
+
+  .project-slide {
+    .flex-direction(column);
+
+    &.project-slide-portrait { }
+
+    &.project-slide-landscape.project-slide-has-description {
+      .project-slide-image-wrapper {
+        // max-width: 75%;
+      }
+    }
+
+    .project-slide-image-wrapper,
+    .project-slide-video-wrapper {
+      margin-left: 0;
+      text-align: left;
+    }
+
+    .project-slide-description-wrapper {
+      margin-left: 0;
+      text-align: left;
+    }
+  }
+
+}
+
+
+/* Image Alignment Right */
+
+.collection-type-project.project-image-alignment-right {
+
+  .project-slide {
+    .flex-direction(column);
+
+    .project-slide-image-wrapper,
+    .project-slide-video-wrapper {
+      margin-right: 0;
+      text-align: right;
+    }
+    .project-slide-description-wrapper {
+      margin-right: 0;
+      text-align: right;
+    }
+  }
+}
+
+
+/* Image Alignment Center */
+
+.collection-type-project.project-image-alignment-center {
+
+  .project-slide {
+    .flex-direction(column);
+
+    &.project-slide-has-no-description {
+      display: block;
+    }
+  }
+
+  .project-slide-description-title {
+    text-align: center;
+  }
+
+  &.full-bleed-project {
+
+    .site-page {
+      padding-right: 0;
+      padding-left: 0;
+      margin-bottom: 0;
+    }
+
+    // in full bleed project, collection header and footer
+    // need site outer padding applied to avoid touching
+    &.site-outer-padding-small {
+      .collection-header,
+      .collection-footer {
+        padding-right: 3vw;
+        padding-left: 3vw;
+      }
+    }
+    &.site-outer-padding-medium {
+      .collection-header,
+      .collection-footer {
+        padding-right: 5vw;
+        padding-left: 5vw;
+      }
+    }
+    &.site-outer-padding-large {
+      .collection-header,
+      .collection-footer {
+        padding-right: 8vw;
+        padding-left: 8vw;
+      }
+    }
+    &.site-outer-padding-custom {
+      .collection-header,
+      .collection-footer {
+        padding-right: @siteCustomPadding;
+        padding-left: @siteCustomPadding;
+      }
+    }
+  }
+
+  // set a baseline for flex children grow
+  .project-slide-image-wrapper,
+  .project-slide-video-wrapper,
+  .project-slide-description-wrapper {
+    .flex(0 1 auto);
+  }
+
+  /* Offset landscape caption text */
+
+  &.show-project-captions.project-image-landscape-caption-style-offset {
+
+    &.project-image-spacing-small {
+      .project-slide.project-slide-has-description.project-slide-pano .project-slide-description-wrapper,
+      .project-slide.project-slide-has-description.project-slide-landscape .project-slide-description-wrapper {
+        margin-top: 10vw;
+        margin-bottom: 5vw;
+      }
+    }
+    &.project-image-spacing-medium  {
+      .project-slide.project-slide-has-description.project-slide-pano .project-slide-description-wrapper,
+      .project-slide.project-slide-has-description.project-slide-landscape .project-slide-description-wrapper {
+        margin-top: 14vw;
+        margin-bottom: 7vw;
+      }
+    }
+    &.project-image-spacing-large {
+      .project-slide.project-slide-has-description.project-slide-pano .project-slide-description-wrapper,
+      .project-slide.project-slide-has-description.project-slide-landscape .project-slide-description-wrapper {
+        margin-top: 20vw;
+        margin-bottom: 10vw;
+      }
+    }
+    &.project-image-spacing-custom {
+      .project-slide.project-slide-has-description.project-slide-pano .project-slide-description-wrapper,
+      .project-slide.project-slide-has-description.project-slide-landscape .project-slide-description-wrapper {
+        margin-top: (@projectImageSpacing * 2);
+        margin-bottom: @projectImageSpacing;
+      }
+    }
+  }
+
+  /* Inset landscape or pano caption text */
+
+  &.show-project-captions.project-image-landscape-caption-style-inset {
+
+    .project-slide.project-slide-has-description.project-slide-pano,
+    .project-slide.project-slide-has-description.project-slide-landscape {
+
+      .project-slide-description-wrapper {
+        position: relative;
+        z-index: 1;
+        top: -20px;
+      }
+      .project-slide-description-body {
+        background-color: @bgColor;
+        padding-right: 2em;
+        padding-left: 2em;
+      }
+    }
+  }
+
+  /* Standard landscape or pano caption text */
+
+  &.show-project-captions.project-image-landscape-caption-style-standard {
+
+    .project-slide.project-slide-has-description.project-slide-pano,
+    .project-slide.project-slide-has-description.project-slide-landscape {
+
+      .project-slide-description-wrapper { }
+    }
+  }
+
+
+  /* Offset portrait caption text */
+
+  &.show-project-captions.project-image-portrait-caption-style-offset {
+
+    &.project-image-spacing-small {
+      .project-slide.project-slide-has-description.project-slide-portrait .project-slide-description-wrapper,
+      .project-slide.project-slide-has-description.project-slide-square .project-slide-description-wrapper {
+        margin-top: 10vw;
+        margin-bottom: 5vw;
+      }
+    }
+    &.project-image-spacing-medium  {
+      .project-slide.project-slide-has-description.project-slide-portrait .project-slide-description-wrapper,
+      .project-slide.project-slide-has-description.project-slide-square .project-slide-description-wrapper {
+        margin-top: 14vw;
+        margin-bottom: 7vw;
+      }
+    }
+    &.project-image-spacing-large {
+      .project-slide.project-slide-has-description.project-slide-portrait .project-slide-description-wrapper,
+      .project-slide.project-slide-has-description.project-slide-square .project-slide-description-wrapper {
+        margin-top: 20vw;
+        margin-bottom: 10vw;
+      }
+    }
+    &.project-image-spacing-custom {
+      .project-slide.project-slide-has-description.project-slide-portrait .project-slide-description-wrapper,
+      .project-slide.project-slide-has-description.project-slide-square .project-slide-description-wrapper {
+        margin-top: (@projectImageSpacing * 2);
+        margin-bottom: @projectImageSpacing;
+      }
+    }
+  }
+
+
+  /* Alternate Captioned Portrait Images */
+
+  &.show-project-captions.project-image-portrait-caption-style-alternate {
+
+    @media screen and (min-width: 769px) {
+
+      .project-slide.project-slide-has-description.project-slide-staggerable {
+        // background-color: red;
+        .display-flex(flex);
+        .justify-content(space-between);
+        .align-items(center);
+        .flex-direction(row);
+        height: auto;
+        max-width: 100%;
+
+        // image wrapper
+        .project-slide-image-wrapper {
+          .flex-order(0);
+          .flex-grow(1);
+          margin-left: auto;
+          margin-right: 0;
+          text-align: right;
+          width: 100%;
+          max-width: 45%;
+        }
+
+        .project-slide-video-wrapper {
+          .flex-order(0);
+          .flex-grow(1);
+          margin-left: auto;
+          margin-right: 0;
+          text-align: right;
+          width: 100%;
+          // max-width: 45%;
+        }
+
+        .project-slide-image {
+          max-width: 80%;
+        }
+
+        // image description
+        .project-slide-description-wrapper {
+          .flex-order(1);
+          .flex-grow(2);
+          margin-right: auto;
+          margin-left: 0;
+          display: block;
+        }
+
+        .project-slide-description-body {
+          margin-left: 0;
+          margin-right: auto;
+          max-width: 30em;
+        }
+
+        // image title
+        .project-slide-description-title {
+          text-align: left;
+        }
+
+        // Styles for every odd slide
+        &.portrait-caption-alternate-odd {
+
+          .project-slide-image-wrapper,
+          .project-slide-video-wrapper {
+            .flex-order(1);
+            margin-left: 0;
+            margin-right: auto;
+            text-align: left;
+          }
+
+          .project-slide-description-wrapper {
+            .flex-order(0);
+            margin-left: auto;
+            margin-right: 0;
+          }
+
+          .project-slide-description-body {
+            margin-right: 0;
+            margin-left: auto;
+          }
+        }
+      }
+
+      // If there's no caption on a staggerable portrait image
+      .project-slide.project-slide-has-no-description.project-slide-staggerable {
+        .project-slide-image-wrapper { }
+      }
+
+      // Staggered image description spacing
+
+      &.project-image-spacing-small {
+        .project-slide.project-slide-has-description.project-slide-staggerable {
+          .project-slide-description-wrapper { margin-left: 2.5vw; }
+          &.portrait-caption-alternate-odd .project-slide-description-wrapper { margin-right: 2.5vw; }
+        }
+      }
+
+      &.project-image-spacing-medium {
+        .project-slide.project-slide-has-description.project-slide-staggerable {
+          .project-slide-description-wrapper { margin-left: 3.75vw; }
+          &.portrait-caption-alternate-odd .project-slide-description-wrapper { margin-right: 3.75vw; }
+        }
+      }
+
+      &.project-image-spacing-large {
+        .project-slide.project-slide-has-description.project-slide-staggerable {
+          .project-slide-description-wrapper { margin-left: 5vw; }
+          &.portrait-caption-alternate-odd .project-slide-description-wrapper { margin-right: 5vw; }
+        }
+      }
+
+      &.project-image-spacing-custom {
+        .project-slide.project-slide-has-description.project-slide-staggerable {
+          .project-slide-description-wrapper { margin-left: (@projectImageSpacing * 0.60); }
+          &.portrait-caption-alternate-odd .project-slide-description-wrapper { margin-right: (@projectImageSpacing * 0.60); }
+        }
+      }
+    }
+  }
+
+  /* Standard portrait caption text */
+
+  &.show-project-captions:not(.offset-project-captions).project-image-portrait-caption-style-standard {
+
+    .project-slide.project-slide-has-description.project-slide-portrait .project-slide-description-wrapper,
+    .project-slide.project-slide-has-description.project-slide-square .project-slide-description-wrapper { }
+
+  }
+}
+
+.collection-type-project.full-bleed-project {
+
+  &.site-outer-padding-small {
+
+    .index-navigation,
+    .index-next {
+      .border-box;
+      padding-right: 3vw;
+      padding-left: 3vw;
+    }
+  }
+
+  &.site-outer-padding-medium {
+
+    .index-navigation,
+    .index-next {
+      .border-box;
+      padding-right: 5vw;
+      padding-left: 5vw;
+    }
+  }
+
+  &.site-outer-padding-large {
+
+    .index-navigation,
+    .index-next {
+      .border-box;
+      padding-right: 8vw;
+      padding-left: 8vw;
+    }
+  }
+
+  &.site-outer-padding-custom {
+
+    .index-navigation,
+    .index-next {
+      .border-box;
+      padding-right: @siteCustomPadding;
+      padding-left: @siteCustomPadding;
+    }
+  }
+}
