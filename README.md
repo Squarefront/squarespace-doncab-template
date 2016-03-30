@@ -14,7 +14,7 @@ Doncab is a feature-packed template with large grid-style layouts, a custom proj
 
 As you might already know, Squarespace's [official template store](http://squarespace.com/templates) contains templates that are sometimes powered by the same template code base.
 
-Wright template currently powers the following Squarespace template starting points.
+York template currently powers the following Squarespace template starting points.
 
 * [York](http://york-demo.squarespace.com)
 
