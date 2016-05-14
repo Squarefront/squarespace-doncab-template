@@ -6,7 +6,7 @@
         {.index?}
           {.if collection}
             <div class="index{.if active} active{.end}{.if homepage} homepage{.end}">
-              <a href="{collection.fullUrl}">
+              <a href="{collection.fullUrl}" class="nav-item-{collection.typeName}">
                 {collection.navigationTitle}
               </a>
             </div>
@@ -22,7 +22,7 @@
 
             {.collection?}
             <div class="collection{.if active} active{.end} folder-link">
-              <a href="{collection.fullUrl}">
+              <a href="{collection.fullUrl}" class="nav-item-{collection.typeName}">
                 {collection.navigationTitle}
               </a>
             </div>
@@ -41,7 +41,7 @@
 
           {.section collection}
           <div class="collection{.if active} active{.end}{.if homepage} homepage{.end} folder-link">
-            <a href="{fullUrl}">
+            <a href="{fullUrl}" class="nav-item-{collection.typeName}">
               {navigationTitle}
             </a>
           </div>
