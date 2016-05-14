@@ -18,7 +18,8 @@ window.Template.Constants = {
 
   BREAKPOINT_MOBILE_BAR: 768,
   AUTHENTICATED: document.documentElement.classList.contains('authenticated-account'),
-  AJAXLOADER: true
+  AJAXLOADER: true,
+  COVER_PAGE: document.querySelector('.sqs-slide-container')
 
 };
 
@@ -44,23 +45,23 @@ window.Template.Controllers = {};
     });
     header.base.removeAttribute('data-nc-loading');
 
-    if(window.Template.Constants.AJAXLOADER && !window.Template.Constants.AUTHENTICATED){
+    if(window.Template.Constants.AJAXLOADER && !window.Template.Constants.AUTHENTICATED && !window.Template.Constants.COVER_PAGE){
       new AjaxLoader({
         sqsController: true,
         timeout: 6000,
         siteContainer: '.content-container',
         pageTransition: {
           animLink: 'index-page-transition-link',
-          animation: 'fadeIn',
+          animClass: 'tweak-page-transition-animation',
           fadeInDuration: 0.78,
-          fadeOutDuration: 0.3,
+          fadeOutDuration: 0.2,
         },
         beforeRequestAnim: function () {
           var container = document.querySelector('.content-container');
           container.classList.add('slide-up');
         },
         afterRequestAnim: function () {
-          var container = document.querySelector('.content-container.slide-up');
+          var container = document.querySelector('.content-container');
           container.classList.remove('slide-up');
           container.classList.add('slide-into-view');
           window.setTimeout(function() {
