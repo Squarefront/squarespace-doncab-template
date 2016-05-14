@@ -2,12 +2,14 @@
   <div class="project-slides">
 
     {.repeated section items}
-        <div class="project-slide {.if title || body}project-slide-has-description{.or}project-slide-has-no-description{.end}{.equal? @index 1} project-first-slide{.end}" data-slide-id="{id}" data-slide-url="{urlId}">
+        <div class="project-slide {.if title || body}project-slide-has-description{.or}project-slide-has-no-description{.end}{.equal? @index 1} project-first-slide{.end}{.video?} project-slide-video{.end}" data-slide-id="{id}" data-slide-url="{urlId}">
 
           {.image?}
-            <div class="project-slide-image-wrapper not-ready" data-image-dimensions"{originalSize}">
-              <img class="project-slide-image loading" {@|image-meta} data-load="false" />
-            </div>
+          <div class="project-slide-image-container" data-image-dimensions="{originalSize}">
+            <figure class="project-slide-image-wrapper content-fill not-ready">
+              <img class="project-slide-image loading" {@|image-meta} data-fixed-ratio="true" data-load="false" />
+            </figure>
+          </div>
           {.end}
           {.video?}
             <div class="project-slide-video-wrapper">
