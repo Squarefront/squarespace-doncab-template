@@ -1,5 +1,5 @@
 # Squarespace Doncab
-> Squarespace's Doncab template, the template that powers York.
+> Squarespace's Doncab template, the template that powers York, Lange, and Shibori.
 
 > **Note:** This is not an official Squarespace template repository.
 
@@ -17,6 +17,8 @@ As you might already know, Squarespace's [official template store](http://square
 York template currently powers the following Squarespace template starting points.
 
 * [York](http://york-demo.squarespace.com)
+* [Lange](http://lange-demo.squarespace.com)
+* [Shibori](http://shibori-demo.squarespace.com)
 
 
 
@@ -46,4 +48,6 @@ This template is a copy of Squarespace's own template for the purposes of tracki
 
 ## Release Notes
 
-* Initial Release - March 29, 2016 - York template release for Website or Commerce plans.
+* Initial Release - March 29, 2016 - York/Lange template release for Website or Commerce plans.
+* Misc Code Updates - April-May - Check commit history, there's been considerable updates all across the board including some removal of CSS classes.
+* New Template Starting Point - May 13 - [Shibori Template](http://shibori-demo.squarespace.com)
