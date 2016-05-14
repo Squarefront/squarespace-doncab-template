@@ -1,7 +1,7 @@
 {.equal? collection.typeName "index"}
 	<!-- item belongs to an index -->
 	{.section items}
-	<div id="indexNav" class="hide" data-content-field="navigation-indexNav">
+	<div id="indexNav" class="hide index-item-navigation" data-content-field="navigation-indexNav">
 	  <nav class="index-navigation" role="navigation">
 	    <a class="index-nav-link index-all-link" href="{collection.fullUrl}">All</a>
 	    {.repeated section @}
@@ -10,7 +10,7 @@
 	    {.end}
 	  </nav>
 	</div>
-	<div id="indexNext">
+	<div id="indexNext" class="index-item-navigation">
 	  <nav class="index-next" class="hide" role="navigation" sqs-controller="Template.Controllers.IndexNavigationController">
 	    {.repeated section @}
 	      {.collection?}<a class="index-next-link {collection.typeLabel}-collection{.section active} active-link{.end} index-page-transition-link" href="{.section homepage}/{.or}{collection.fullUrl}{.end}"><span class="index-next-link-label"></span><span class="index-next-link-title">{collection.navigationTitle}</span></a>
