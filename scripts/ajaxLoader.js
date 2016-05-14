@@ -6,11 +6,10 @@
   var ajaxFired = false;
   var currentEvent;
   var currentTarget;
-  var modifierKey;
   var indexNextAnim = true;
 
   // This selector will prevent AjaxLoader from ajax loading the content of these links
-  var DEFAULT_ANCHORS = 'a:not([href^="http"]):not([href^="#"]):not([href^="/#"]):not([href^="/commerce"]):not([href^="mailto"]):not([href^="tel"]):not([href^="javascript"])';
+  var DEFAULT_ANCHORS = 'a[href]:not([href^="http"]):not([href^="#"]):not([href^="/#"]):not([href^="/commerce"]):not([href^="mailto"]):not([href^="tel"]):not([href^="javascript"]):not(.nav-item-splash-page)';
 
   // if no history object, no querySelector method, or you're logged in, don't run AjaxLoader.
   // window.location.pathname.match(/\b(config)\b/g)
@@ -40,7 +39,7 @@
     this.ACTIVE_NAV_CLASS     = config.activeNavClass || 'active';
     this.pageTransition = {
       animLink: config.pageTransition.animLink    || null,
-      animation: config.pageTransition.animation  || 'fadeIn',
+      animClass: config.pageTransition.animClass  || null,
       fadeInDuration: config.pageTransition.fadeInDuration    || 0.78,
       fadeOutDuration: config.pageTransition.fadeOutDuration    || 0.20
     };
@@ -71,8 +70,6 @@
       this.bindMetaTags(this.findMetaTags());
 
       body.addEventListener('click', this.bindLinks.bind(this));
-      body.addEventListener('keydown', this.bindModifierKeyDown.bind(this));
-      body.addEventListener('keyup', this.bindModifierKeyUp.bind(this));
       window.addEventListener('popstate', this.bindPopState.bind(this));
     },
 
@@ -105,8 +102,9 @@
     bindLinks: function (e) {
       var link = this.walkUpDOM(e.target || e.srcElement, 'A');
       if(link && link.getAttribute('data-ajax-loader') === 'ajax-loader-binded') {
+
         // If control, alt, or shift are pressed, return false and let default browser behavior happen
-        if(modifierKey){
+        if(this.modifierKeyPressed(e)) {
           return false;
         }
 
@@ -117,13 +115,6 @@
           currentEvent = e;
           currentTarget = e.target;
           var url = link.getAttribute('href');
-          // if the clicked link is the same as current page, don't update the history
-
-          if(url !== window.location.pathname){
-            this.replaceHistory();
-            this.updateHistory(url, document.querySelector('title').textContent);
-          }
-
           this.fireRequest(url)
         }
       }
@@ -178,61 +169,64 @@
 
     },
 
-    bindModifierKeyDown: function(e){
-      if(e.keyCode == 16 || e.keyCode == 17 || e.keyCode == 18 || e.metaKey){
-        modifierKey = true;
+    modifierKeyPressed: function(e) {
+      if(e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) {
+        return true;
       }
+      return false;
     },
 
-    bindModifierKeyUp: function(e){
-      if(e.keyCode == 16 || e.keyCode == 17 || e.keyCode == 18 || e.metaKey){
-        modifierKey = false;
-      }
-    },
-
-    // Prototype - remove!
     hasSomeParentTheClass: function (element, classname) {
-      if (element.className && element.className.split(' ').indexOf(classname)>=0) return true;
+      if (element.className && element.className.split && element.className.split(' ').indexOf(classname)>=0) return true;
       return element.parentNode && this.hasSomeParentTheClass(element.parentNode, classname);
-    },
-
-    // Prototype - remove!
-    getParentId: function (element, classname) {
-      if ( element.className && element.className.split(' ').indexOf(classname)>=0) return element.id;
-      return element.parentNode && this.getParentId(element.parentNode, classname);
     },
 
     fireRequest: function (url) {
       ajaxFired = true;
-      this.destroySqsBlocks();
+      // this.destroySqsBlocks();
       this.toggleLoadingAttr('add');
       // this.toggleWillChange(document.querySelector(this.SITE_CONTAINER), ['transform', 'opacity']);
 
-      if( currentEvent.type == 'click'
-        && ( this.hasSomeParentTheClass(currentTarget, this.pageTransition.animLink) ) ) {
+      if( currentEvent.type == 'click' ) {
 
-        if(this.beforeRequestAnim) {
-
-          this.beforeRequestAnim();
-          this.animations.fadeOut(this.SITE_CONTAINER, this.pageTransition.fadeOutDuration);
-          window.setTimeout(function(){
+        if(this.isPageTransitionEnabled() && this.hasSomeParentTheClass(currentTarget, this.pageTransition.animLink) ) {
+          // Index link click, with Page Transition Animation Enabled
+          if(this.beforeRequestAnim) {
+            this.beforeRequestAnim();
+          }
+          // No before request animation
+          this.animations.fadeOut(this.SITE_CONTAINER, this.pageTransition.fadeOutDuration, function() {
             this.modifyLinkState(url);
+            this.destroySqsBlocks();
             this.ajax(url);
-          }.bind(this), this.pageTransition.fadeOutDuration * 1000);
-        } else if(this.pageTransition.animation) {
-          this.animations.fadeOut(this.SITE_CONTAINER, 0.0);
-          this.modifyLinkState(url);
-          this.ajax(url);
-        }
+          }.bind(this));
 
+        } else if(this.hasSomeParentTheClass(currentTarget, this.pageTransition.animLink)) {
+          // Index Link click with Page Transition disabled
+          this.animations.fadeOut(this.SITE_CONTAINER, this.pageTransition.fadeOutDuration, function() {
+            this.modifyLinkState(url);
+            this.destroySqsBlocks();
+            this.ajax(url);
+          }.bind(this));
+
+        } else {
+          // Normal page link click
+          this.animations.fadeOut(this.SITE_CONTAINER, 0.12, function() {
+            this.modifyLinkState(url);
+            this.destroySqsBlocks();
+            this.ajax(url);
+          }.bind(this));
+
+        }
       } else {
-        if(this.pageTransition.animation) {
-          this.animations.fadeOut(this.SITE_CONTAINER, 0.0);
+        // Back button click
+        this.animations.fadeOut(this.SITE_CONTAINER, 0.12, function() {
           this.modifyLinkState(url);
+          this.destroySqsBlocks();
           this.ajax(url);
-        }
-      }
+        }.bind(this));
 
+      }
     },
 
     ajax: function (url) {
@@ -249,7 +243,17 @@
       if(httpRequest.readyState === 4) {
         if(httpRequest.status == 200) {
           var pageData = this.createDummyDom(httpRequest.responseText);
-          this.updatePage(pageData);
+          if(!pageData.container || !pageData.content) {
+            this.handleTimeout(url);
+          } else {
+            // if the clicked link is the same as current page, don't update the history
+            if(url !== window.location.pathname){
+              this.replaceHistory();
+              this.updateHistory(url, document.querySelector('title').textContent);
+            }
+
+            this.updatePage(pageData);
+          }
         } else {
           this.handleTimeout(url);
         }
@@ -289,8 +293,8 @@
         docTitle: docTitle,
         bodyClasses: bodyClasses,
         bodyId: bodyId,
-        content: html.querySelector(this.CONTENT).outerHTML,
-        container: html.querySelector(this.SITE_CONTAINER).innerHTML
+        content: html.querySelector(this.CONTENT) ? html.querySelector(this.CONTENT).outerHTML : null,
+        container: html.querySelector(this.SITE_CONTAINER) ? html.querySelector(this.SITE_CONTAINER).innerHTML : null
       };
 
       // html.removeChild(html.querySelector('body'));
@@ -328,10 +332,10 @@
       if( currentEvent.type == 'click' && ( this.hasSomeParentTheClass(currentTarget, this.pageTransition.animLink) )   ) {
         if(this.afterRequestAnim) {
           this.afterRequestAnim();
-          this.animations[this.pageTransition.animation](this.SITE_CONTAINER, this.pageTransition.fadeInDuration);
+          this.animations.fadeIn(this.SITE_CONTAINER, this.pageTransition.fadeInDuration);
         }
-      } else if(this.pageTransition.animation) {
-        this.animations[this.pageTransition.animation](this.SITE_CONTAINER, this.pageTransition.fadeInDuration);
+      } else {
+        this.animations.fadeIn(this.SITE_CONTAINER, this.pageTransition.fadeInDuration);
       }
 
       // Determine scroll position - if coming from a link click, go to top, else, scroll to history position
@@ -339,6 +343,7 @@
         this.scrollToPosition(0, 0);
         this.replaceHistory();
       } else {
+        // this.scrollToPosition(window.history.state.position.x, window.history.state.position.y);
         this.scrollToPosition(0, 0);
       }
 
@@ -420,6 +425,13 @@
       el.style.willChange = value;
     },
 
+    isPageTransitionEnabled: function () {
+      if(document.body.classList.contains(this.pageTransition.animClass)) {
+        return true;
+      }
+      return false;
+    },
+
     animations: {
       fadeIn: function (el, duration, cb) {
         var container = document.querySelector('[data-ajax-loader="loaded"] ' + el);
@@ -433,7 +445,7 @@
         var container = document.querySelector('[data-ajax-loader="loading"] ' + el);
         container.setAttribute('style', 'opacity: 0; -webkit-transition: opacity ' + duration + 's; transition: opacity ' + duration + 's;');
         if(cb) {
-          window.setTimeout(cb, duration);
+          window.setTimeout(cb, duration * 1000);
         }
       }.bind(this),
 
