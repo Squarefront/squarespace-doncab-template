@@ -2,6 +2,7 @@ window.Template.Controllers.BodyClassController = function() {
   'use strict';
 
   var body = document.body;
+  var timer;
 
   var tagline       = body.querySelector('[data-nc-element="tagline"]');
   var secondaryNav  = body.querySelector('[data-nc-element="secondary-nav"]');

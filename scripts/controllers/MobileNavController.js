@@ -2,6 +2,8 @@ window.Template.Controllers.MobileNavController = function() {
 
   /* This controller adds mobile-menu-open to body when mobileToggle is checked */
 
+  // TRANSITION_DELAY should match @mobileOpacityFadeOut in responsive-nav.less
+  var TRANSITION_DELAY = 100;
   var scrollY;
   var scrollX;
 
@@ -26,9 +28,9 @@ window.Template.Controllers.MobileNavController = function() {
 
   function toggleMobileNav(e) {
     var body = document.body;
-    var site = document.querySelector('#site');
+    var site = document.querySelector('.site-container');
     var mobileBarWrapper = document.querySelector('.mobile-bar-wrapper');
-    var overlayNav = document.querySelector('#overlayNav');
+    var overlayNav = document.querySelector('.overlay-nav-container');
     if(!body.classList.contains('mobile-menu-open')) {
       scrollY = window.scrollY;
       scrollX = window.scrollX;
@@ -36,22 +38,35 @@ window.Template.Controllers.MobileNavController = function() {
 
     document.documentElement.classList.toggle('mobile-menu-open', mobileNavToggle.checked);
     body.classList.toggle('mobile-menu-open', mobileNavToggle.checked);
+    if(body.classList.contains('mobile-menu-open')) {
+      overlayNav.style.paddingTop = mobileBarWrapper.offsetHeight + 'px';
+      overlayNav.style.paddingBottom = mobileBarWrapper.offsetHeight + 'px';
+    }
+
     if(!body.classList.contains('mobile-menu-open')) {
-      window.scrollTo(scrollX, scrollY);
+      window.setTimeout(function(){
+        window.scrollTo(scrollX, scrollY);
+      }, TRANSITION_DELAY);
     } else {
-      // overlayNav.style.height = window.innerHeight - mobileBarWrapper.offsetHeight + 'px';
+
       if(body.classList.contains('tweak-mobile-bar-position-top-fixed')) {
-        window.scrollTo(0, 0);
+        window.setTimeout(function(){
+          window.scrollTo(0, 0);
+        }, TRANSITION_DELAY);
       }
 
       if(body.classList.contains('tweak-mobile-bar-position-bottom-fixed')) {
-        window.scrollTo(0, mobileBarWrapper.getBoundingClientRect().bottom);
+        window.setTimeout(function(){
+          window.scrollTo(0, mobileBarWrapper.getBoundingClientRect().bottom);
+        }, TRANSITION_DELAY);
       }
 
     }
     if(body.classList.contains('tweak-mobile-bar-position-standard')) {
       if(body.classList.contains('mobile-menu-open')) {
-        site.style.marginTop = mobileBarWrapper.offsetHeight + 'px';
+        window.setTimeout(function(){
+          site.style.marginTop = mobileBarWrapper.offsetHeight + 'px';
+        }, TRANSITION_DELAY);
       } else {
         site.style.marginTop = '0px';
       }
@@ -62,7 +77,7 @@ window.Template.Controllers.MobileNavController = function() {
   function addMarginToBody() {
     var body = document.body;
     var mobileBarWrapper = document.querySelector('.mobile-bar-wrapper');
-    var site = document.querySelector('#site');
+    var site = document.querySelector('.site-container');
     if(window.innerWidth <= 768) {
       if(body.classList.contains('tweak-mobile-bar-position-standard')) {
         site.style.paddingTop = '0px';
@@ -84,6 +99,23 @@ window.Template.Controllers.MobileNavController = function() {
       return;
     }
 
+  };
+
+  // Add padding equal to the mobile bar height always
+  function addPaddingToOverlay() {
+    var body = document.body;
+    var navContainer = document.querySelector('.overlay-nav-container');
+    var mobileBarWrapper = document.querySelector('.mobile-bar-wrapper');
+
+    if(body.classList.contains('mobile-menu-open')) {
+      navContainer.style.paddingTop = mobileBarWrapper.offsetHeight + 'px';
+      navContainer.style.paddingBottom = mobileBarWrapper.offsetHeight + 'px';
+    } else {
+
+        navContainer.style.paddingTop = '0px';
+        navContainer.style.paddingBottom = '0px';
+
+    }
   };
   // maintains scroll position when mobile nav is active
   function saveScrollPos(e) {
@@ -118,9 +150,11 @@ window.Template.Controllers.MobileNavController = function() {
 
   /* Sync and Destroy */
   function sync() {
+
     addMarginToBody();
     handleAnnouncementBar();
     handleMobileInfoBar();
+
     window.addEventListener('resize', addMarginToBody);
     window.addEventListener('resize', handleAnnouncementBar);
     mobileNavToggle.addEventListener('change', toggleMobileNav);

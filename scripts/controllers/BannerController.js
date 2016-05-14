@@ -11,7 +11,7 @@ window.Template.Controllers.BannerController = function(element){
     'show-events-banner',
     'show-gallery-banner',
     'show-page-banner',
-    'show-shop-banner',
+    'show-products-banner',
     'show-project-banner',
     'banner-height',
     'banner-image-crop',
@@ -23,14 +23,29 @@ window.Template.Controllers.BannerController = function(element){
     'full-bleed-project'
   ];
 
+  var showBannerFontSizeTweaks = [
+    'banner-page-description-font-font-size',
+    'banner-page-description-title-font-size',
+    'bannerPageTitleMin',
+    'bannerPageDescriptionMin',
+    'scale-banner-description-font-size',
+    'scale-banner-title-font-size',
+    'banner-title-spacing',
+    'page-banner-text-width'
+  ];
+
   SQS.Tweak.watch(bannerImgTweaks, function(tweak){
-    handleBannerImage(page);
     autoColorBannerBackground(page);
     moveIntroTextWrapper(page);
+    setMinHeight();
+    handleBannerImage(page);
   });
 
-  window.Template.Util.reloadImages(document.querySelectorAll('.collection-thumbnail-image img'), {load: true});
-  window.addEventListener('resize', resizeBanner);
+  SQS.Tweak.watch(showBannerFontSizeTweaks, function(tweak){
+    setMinHeight();
+    handleBannerImage(page);
+  });
+
 
   initialize();
 
@@ -124,15 +139,33 @@ window.Template.Controllers.BannerController = function(element){
   };
 
   function resizeBanner() {
+    setMinHeight();
     window.Template.Util.reloadImages(document.querySelectorAll('.collection-thumbnail-image-container img'), {load: true});
+  }
+
+  // Set a minimum height so large banner text doesn't get cut off
+  function setMinHeight() {
+    var pageType = determineCollectionType();
+    if(!document.body.classList.contains('show-' + pageType + '-banner')) {
+      bannerWrapper.style.minHeight = 0;
+      return;
+    }
+
+    var pageTextWrapper = document.querySelector('.page-text-wrapper');
+    bannerWrapper.style.minHeight = pageTextWrapper.offsetHeight + 'px';
   }
 
   function initialize() {
     page = determineCollectionType();
-    handleBannerImage(page);
+
+    window.Template.Util.reloadImages(document.querySelectorAll('.collection-thumbnail-image img'), {load: true});
+    window.addEventListener('resize', resizeBanner);
+
     autoColorBannerBackground(page);
     wrapPageDescriptionText();
     moveIntroTextWrapper(page);
+    setMinHeight();
+    handleBannerImage(page);
   };
 
   return {
