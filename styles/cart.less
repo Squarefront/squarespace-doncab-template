@@ -110,21 +110,38 @@
 
 // =======================================================
 
-.site-header .Cart { .tweak-header-cart-font; }
-.tweak-header-cart-style-text .site-header .Cart { .mixin-cart(text, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
-.tweak-header-cart-style-cart .site-header .Cart { .mixin-cart(cart, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
-.tweak-header-cart-style-bag .site-header .Cart { .mixin-cart(bag, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color); }
+// Cart in site header
 
-// .Mobile-bar .Cart { .tweak-mobile-bar-cart-font; }
-// .tweak-mobile-bar-cart-style-text .Mobile-bar .Cart { .mixin-cart(text, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
-// .tweak-mobile-bar-cart-style-cart .Mobile-bar .Cart { .mixin-cart(cart, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
-// .tweak-mobile-bar-cart-style-bag .Mobile-bar .Cart { .mixin-cart(bag, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
+.site-header .Cart {
+  .tweak-header-cart-font;
+}
+.tweak-header-cart-style-text .site-header .Cart {
+  .mixin-cart(text, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color);
+}
+.tweak-header-cart-style-cart .site-header .Cart {
+  .mixin-cart(cart, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color);
+}
+.tweak-header-cart-style-bag .site-header .Cart {
+  .mixin-cart(bag, @tweak-header-cart-color, @tweak-header-cart-flag-color, @tweak-header-cart-flag-text-color);
+}
 
-.overlay-nav-wrapper .Cart { .tweak-mobile-bar-cart-font; }
-.overlay-nav-wrapper .Cart .Cart-inner { margin-top: @mobileMenuCartSpacing; }
+// Cart in overlay nav
 
-.tweak-mobile-bar-cart-style-text .overlay-nav-wrapper .Cart { .mixin-cart(text, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
-.tweak-mobile-bar-cart-style-cart .overlay-nav-wrapper .Cart { .mixin-cart(cart, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
-.tweak-mobile-bar-cart-style-bag .overlay-nav-wrapper .Cart { .mixin-cart(bag, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color); }
+.overlay-nav-wrapper .Cart {
+  .tweak-mobile-bar-cart-font;
+  padding-top: @mobileMenuCartSpacing;
+  padding-bottom: @mobileMenuCartSpacing;
+  display: block;
+}
+
+.tweak-mobile-bar-cart-style-text .overlay-nav-wrapper .Cart {
+  .mixin-cart(text, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color);
+}
+.tweak-mobile-bar-cart-style-cart .overlay-nav-wrapper .Cart {
+  .mixin-cart(cart, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color);
+}
+.tweak-mobile-bar-cart-style-bag .overlay-nav-wrapper .Cart {
+  .mixin-cart(bag, @tweak-mobile-bar-cart-color, @tweak-mobile-bar-cart-flag-color, @tweak-mobile-bar-cart-flag-text-color);
+}
 
 .tweak-mobile-bar-cart-hidden .overlay-nav-wrapper .Cart { display: none; }

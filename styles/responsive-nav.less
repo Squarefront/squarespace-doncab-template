@@ -1,15 +1,108 @@
 
 /* RESPONSIVE NAV STYLES
 -------------------------------------------------*/
+@mobileBgColorFadeIn: 100ms;
+@mobileOpacityFadeOut: 100ms;
+@mobileSubNavOpacity: 250ms;
+@mobileSubNavHeight: 500ms;
 
-// Mobile menu button and site title / logo
-.mobile-nav-container {
+
+// =======================================================
+//
+//    Mobile Bar Defaults
+//
+// =======================================================
+
+
+body:not(.mobile-menu-open) {
+  height: 100%;
+  // delay body height change when closed
+  .transition-delay (0ms);
+}
+
+.overflow-wrapper {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  min-height: 100vh;
+  background-color: @bgColor;
+  .transition (background-color @mobileBgColorFadeIn linear);
+}
+
+.site-container {
+  opacity: 1;
+  height: 100%;
+  .transition (opacity @mobileOpacityFadeOut linear @mobileOpacityFadeOut);
+}
+
+// mobile bar structure and layering
+
+.mobile-bar-wrapper {
   display: none;
 }
 
+.mobile-bar-flex-child {
+  display: none;
+  visibility: hidden;
+  width: @icon--hamburger-width;
+  height: @icon--hamburger-height;
+}
+
+.mobile-branding-wrapper {
+  display: block;
+  .flex-grow(0);
+  .align-self(center);
+
+  a { display: block; }
+}
+
+.mobile-nav-toggle-label {
+  .border-box;
+  .no-select;
+  .flex-grow(0);
+  .align-self(center);
+}
+
+// mobile menu overlay
+
+.overlay-nav-container {
+  position: absolute;
+  z-index: 10001;
+  box-sizing: border-box;
+  min-height: 100vh;
+  width: 0;
+  text-align: center;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  pointer-events: none;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 100%;
+  // need delay to avoid animation of left postion in hidden state
+  .transition-delay (@mobileBgColorFadeIn);
+  // flex it so hard
+  .display-flex(flex);
+  .align-items(center);
+  .justify-content(center);
+  .flex-direction(column);
+}
+
+.overlay-nav-wrapper {
+  margin: auto;
+  // padding: 20vh 20vw;
+  opacity: 0;
+  // .border-box;
+  .transition (opacity @mobileOpacityFadeOut linear);
+}
+
+
+/* Media Query, Tablet Landscape
+***********************************/
+
 @media only screen and (max-width: 1024px) {
 
-  // Kills the background color on tapped links
+  // Kills the default background color on tapped links
   .touch-styles {
     a,
     label {
@@ -18,12 +111,158 @@
       tap-highlight-color: rgba(0,0,0,0) !important;
     }
   }
-
 }
+
+
+/* Media Query, Tablet Portrait
+***********************************/
 
 @media only screen and (max-width: 768px) {
 
-  // mobile fonts and tweaks
+  // mobile bar defaults
+
+  .mobile-bar-wrapper {
+    z-index: 10002;
+    position: relative;
+    width: 100vw;
+    .display-flex;
+    .justify-content(space-between);
+  }
+
+  // mobile bar fixed positions
+
+  .tweak-mobile-bar-position-top-fixed {
+
+    .mobile-bar-wrapper {
+      position: fixed;
+      top: 0;
+      width: 100vw;
+    }
+
+    .overlay-nav-container {
+      position: absolute;
+    }
+
+    &:not(.tweak-transparent-fixed-mobile-bar) .mobile-bar-wrapper {
+      background-color: @bgColor;
+      .transition (background-color @mobileBgColorFadeIn linear);
+    }
+  }
+
+  .tweak-mobile-bar-position-bottom-fixed {
+
+    .mobile-bar-wrapper {
+      position: fixed;
+      bottom: 0;
+      width: 100vw;
+    }
+
+    .overlay-nav-container {
+      .flex-order(1);
+    }
+
+    &:not(.tweak-transparent-fixed-mobile-bar) .mobile-bar-wrapper {
+      .flex-order(2);
+      background-color: @bgColor;
+      .transition (background-color @mobileBgColorFadeIn linear);
+    }
+  }
+
+  // mobile bar transparent background option
+
+  .tweak-mobile-bar-position-top-fixed:not(.mobile-menu-open).tweak-transparent-fixed-mobile-bar,
+  .tweak-mobile-bar-position-bottom-fixed:not(.mobile-menu-open).tweak-transparent-fixed-mobile-bar {
+    .mobile-bar-wrapper {
+      background-color: transparent;
+    }
+  }
+
+  // mobile bar site tagline position
+
+
+  .tweak-mobile-bar-site-tagline-position-hide {
+
+    .mobile-site-tagline { display: none; }
+  }
+
+  .tweak-mobile-bar-site-tagline-position-below-branding {
+
+    .mobile-site-tagline {
+      display: block;
+      margin-top: @tweak-mobile-bar-site-tagline-spacing;
+    }
+  }
+
+  .tweak-mobile-bar-site-tagline-position-beside-branding {
+
+    .mobile-site-title,
+    .mobile-site-tagline {
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .mobile-site-tagline {
+      margin-left: @tweak-mobile-bar-site-tagline-spacing;
+    }
+  }
+
+  // overlay nav defaults
+
+  .overlay-nav-container {
+
+    // folder defaults
+
+    .folder {
+      position: relative;
+    }
+
+    // folder is closed
+    .svg & .folder-toggle-label { margin-right: -1em; }
+
+    // svg fallback
+    .no-svg & {
+      .folder-toggle-label:after {
+        content: '\25BE';
+        width: 1em;
+        display: inline-block;
+      }
+    }
+
+    .subnav {
+      max-height: 0;
+      overflow: hidden;
+      position: relative;
+      opacity: 0;
+      .border-box;
+      .transition2(max-height @mobileSubNavOpacity + 200 cubic-bezier(.33, 0, .2, 1), opacity @mobileSubNavOpacity + 1000 cubic-bezier(.33, 0, .2, 1));
+
+      .folder-link:last-child {
+        padding-bottom: @mobileMenuVerticalSpacing;
+      }
+    }
+
+    // folder is open
+    .folder-toggle-box:checked {
+
+      .no-svg & {
+        ~ .folder-toggle-label:after {
+          .transform(rotate(-180deg));
+          .transform-origin(center, center);
+        }
+      }
+
+      ~ .folder-toggle-label .Icon--caretSmall--right {
+        .transform(rotate(-90deg));
+      }
+
+      ~ .subnav {
+         max-height: 100vh;
+         opacity: 1;
+         .transition(max-height @mobileSubNavHeight cubic-bezier(.33, 0, .2, 1));
+      }
+    }
+  }
+
+  // mobile branding colors and fonts
 
   .mobile-branding-wrapper {
 
@@ -32,7 +271,7 @@
 
       a {
         color: @tweak-mobile-bar-branding-site-title-color;
-        .transition (color 300ms cubic-bezier(.33, 0, .2, 1));
+        .transition (color 300ms linear);
         text-decoration: none;
       }
 
@@ -54,19 +293,19 @@
     .mobile-site-tagline {
       .tweak-mobile-bar-site-tagline-font;
       color: @tweak-mobile-bar-site-tagline-color;
-      .transition (color 300ms cubic-bezier(.33, 0, .2, 1));
-      margin-top: @tweak-mobile-bar-site-tagline-spacing;
+      .transition (color 300ms linear);
 
       .mobile-menu-open & { color: @tweak-mobile-menu-site-tagline-color; }
     }
   }
 
-  .tweak-mobile-bar-site-tagline-position-hide .mobile-site-tagline { display: none; }
-  .tweak-mobile-bar-site-tagline-position-w-branding .mobile-site-tagline { display: block; }
+  // mobile nav link colors and icons
 
   .mobile-primary-nav-links {
+    .tweak-mobile-overlay-menu-primary-font;
+
     a, .folder-toggle-label {
-      .tweak-mobile-overlay-menu-primary-font;
+      display: block;
       color: @tweak-mobile-overlay-menu-primary-text-color;
     }
     .Icon {
@@ -80,8 +319,10 @@
   }
 
   .mobile-secondary-nav-links {
+    .tweak-mobile-overlay-menu-secondary-font;
+
     a, .folder-toggle-label {
-      .tweak-mobile-overlay-menu-secondary-font;
+      display: block;
       color: @tweak-mobile-overlay-menu-secondary-text-color;
     }
     .Icon {
@@ -94,30 +335,9 @@
     }
   }
 
-  // mobile structure
-  .mobile-bar-wrapper {
-    z-index: 10002;
-    position: relative;
-    width: 100vw;
-    .display-flex;
-    // .transition (background-color 300ms cubic-bezier(.33, 0, .2, 1));
-    .justify-content(space-between);
-    // background-color: @bgColor;
-
-    .mobile-menu-open & {
-      // background-color: @tweak-mobile-overlay-menu-color;
-      // .transition (background-color 300ms cubic-bezier(.33, 0, .2, 1));
-    }
-  }
+  // mobile branding position (left or right)
 
   .mobile-branding-wrapper {
-    display: block;
-    .flex-grow(0);
-    .align-self(center);
-
-    a {
-      display: block;
-    }
 
     .tweak-mobile-bar-branding-position-left & {
       .flex-order(0);
@@ -129,11 +349,59 @@
     }
   }
 
+  // mobile branding position (center)
+
+  .tweak-mobile-bar-branding-position-center {
+    .mobile-branding-wrapper {
+      text-align: center;
+    }
+
+    .mobile-bar-flex-child {
+      display: block;
+      visibility: visible;
+      .align-self(center);
+    }
+
+    &.site-outer-padding-small {
+      .mobile-bar-flex-child {
+        padding: 4vw;
+      }
+    }
+
+    &.site-outer-padding-medium {
+      .mobile-bar-flex-child {
+        padding: 5vw;
+      }
+    }
+
+    &.site-outer-padding-large {
+      .mobile-bar-flex-child {
+        padding: 6vw;
+      }
+    }
+
+    &.site-outer-padding-custom {
+      .mobile-bar-flex-child {
+        padding: @siteCustomPadding;
+      }
+    }
+
+    &.tweak-mobile-bar-menu-icon-position-left {
+      .mobile-nav-toggle-label {
+        .flex-order(1);
+      }
+      .mobile-branding-wrapper {
+        .flex-order(2);
+      }
+      .mobile-bar-flex-child {
+        .flex-order(3);
+      }
+    }
+  }
+
+  // mobile nav toggle icon, color, alignment
+
   .mobile-nav-toggle-label {
-    .border-box;
-    .no-select;
-    .flex-grow(0);
-    .align-self(center);
 
     display: block;
     cursor: pointer;
@@ -141,13 +409,13 @@
     .Icon--close {
       display: none;
       stroke: @tweak-mobile-bar-menu-icon-color;
-      .transition (color 300ms cubic-bezier(.33, 0, .2, 1));
+      .transition (color 300ms linear);
     }
     .Icon--hamburger {
       display: block;
       margin: 0 0 0 auto;
       stroke: @tweak-mobile-bar-menu-icon-color;
-      .transition (color 300ms cubic-bezier(.33, 0, .2, 1));
+      .transition (color 300ms linear);
     }
 
     .tweak-mobile-bar-branding-position-left & {
@@ -158,250 +426,68 @@
       .flex-order(0);
       text-align: left;
     }
-
   }
 
-  // mobile menu overlay
-
-  #overlayNav {
-    position: absolute;
-    z-index: 10001;
-    width: 0%;
-    // height: 100%;
-    text-align: center;
-    overflow: hidden;
-    pointer-events: none;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 100%;
-    // need delay to avoid animation of left postion in hidden state
-    -webkit-transition-delay: 300ms;
-    -moz-transition-delay: 300ms;
-    -o-transition-delay: 300ms;
-    transition-delay: 300ms;
-    // background-color: @tweak-mobile-overlay-menu-color;
-    // .transition (background-color 300ms cubic-bezier(.33, 0, .2, 1));
-  }
-
-  .overlay-nav-wrapper {
-    .border-box;
-    .scale(1, 1);
-    .transition2 (transform 300ms cubic-bezier(.33, 0, .2, 1), opacity 300ms cubic-bezier(.33, 0, .2, 1));
-    display: table-cell;
-    width: 100vw;
-    height: 100vh;
-    vertical-align: middle;
-    padding: 13vh 16vw;
-    // background-color: @tweak-mobile-overlay-menu-color;
-    opacity: 0;
-  }
+  // vertical spacing between navigation wrappers
 
   .mobile-primary-nav-wrapper + .mobile-secondary-nav-wrapper {
-    margin-top: @mobileMenuVerticalSpacing;
+    padding-top: @mobileMenuVerticalSpacing;
   }
 
 
-  /* Container around entire responsive-nav.block */
+  // =======================================================
+  //
+  //    Mobile Bar Menu is Open
+  //
+  // =======================================================
 
-  // Defaults
-  .mobile-nav-container {
-    .display-flex;
-    .flex-direction(column);
-    // .justify-content(space-between);
-    height: auto;
-    background-color: @bgColor;
-    // .transition (background-color 300ms cubic-bezier(.33, 0, .2, 1));
-    z-index: 10002;
-
-    .tweak-mobile-bar-position-top-fixed & {
-      position: fixed;
-      top: 0;
-      width: 100vw;
-
-      #overlayNav {
-        position: absolute;
-      }
-    }
-
-    .tweak-mobile-bar-position-bottom-fixed & {
-      position: fixed;
-      bottom: 0;
-      width: 100vw;
-
-      #overlayNav {
-        .flex-order(1);
-      }
-      .mobile-bar-wrapper {
-        .flex-order(2);
-      }
-    }
-  }
-
-  // force transparent mobile bar background
-
-  .tweak-mobile-bar-position-top-fixed:not(.mobile-menu-open).tweak-transparent-fixed-mobile-bar,
-  .tweak-mobile-bar-position-bottom-fixed:not(.mobile-menu-open).tweak-transparent-fixed-mobile-bar {
-    .mobile-bar-wrapper,
-    .mobile-nav-container {
-      background-color: transparent;
-    }
-  }
-
-  // When menu is open
-  body.mobile-menu-open .mobile-nav-container {
-    height: 100vh;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 10002;
-
-    background-color: @tweak-mobile-overlay-menu-color;
-    .transition (background-color 300ms cubic-bezier(.33, 0, .2, 1));
-
-    .mobile-bar-wrapper {
-      background-color: transparent;
-    }
-  }
-
-
-  // When menu is open and mobile bar is fixed bottom
-  body.mobile-menu-open.tweak-mobile-bar-position-bottom-fixed {
-    .mobile-nav-container {
-      #overlayNav {
-        position: absolute;
-      }
-
-      .mobile-bar-wrapper {
-        position: absolute;
-        bottom: 0;
-      }
-    }
-  }
-
-  // When menu is open and mobile bar is fixed top
-  body.mobile-menu-open.tweak-mobile-bar-position-top-fixed {
-    .mobile-nav-container {
-
-      #overlayNav {
-
-      }
-
-      .mobile-bar-wrapper {
-
-      }
-    }
-  }
-
-  // overlay folder defaults
-
-  #overlayNav {
-
-    .folder {
-      position: relative;
-    }
-
-    .svg .folder-toggle-label { margin-right: -1em; }
-
-    // folder is closed
-    .no-svg & {
-      .folder-toggle-label:after {
-        content: '\25BE';
-        width: 1em;
-        display: inline-block;
-      }
-    }
-
-    .subnav {
-      max-height: 0;
-      overflow: hidden;
-      position: relative;
-      .border-box;
-      .scale(1, 0);
-      .transform-origin(1em, 0);
-      .transition2 (transform 300ms ease-in-out, max-height 300ms ease-in-out);
-
-      .folder-link:last-child {
-        // margin-bottom: @mobileMenuVerticalSpacing;
-      }
-    }
-
-    // folder is open
-    .folder-toggle-box:checked {
-
-      .no-svg & {
-        ~ .folder-toggle-label:after {
-          .transform(rotate(-180deg));
-          .transform-origin(center, center);
-        }
-      }
-
-      ~ .folder-toggle-label .Icon--caretSmall--right {
-        .transform(rotate(-90deg));
-      }
-
-      ~ .subnav {
-         max-height: 100vh;
-         .scale(1, 1);
-      }
-    }
-  }
-
-  // Changing height of body to prevent overflow on menu open
-  body:not(.mobile-menu-open) {
-    // .transition (height 0ms linear 300ms);
-    -webkit-transition-delay: 300ms;
-    -moz-transition-delay: 300ms;
-    -o-transition-delay: 300ms;
-    transition-delay: 300ms;
-    // height: 100%;
-  }
 
   body.mobile-menu-open {
+
+    // body height change when mobile menu is open
+    background-color: @tweak-mobile-overlay-menu-color;
     overflow: hidden;
-    position: relative;
-
-    .transition (height 0ms linear);
     height: 100vh;
-    // .transition (height 0ms linear);
+    .transition (height 0ms linear @mobileOpacityFadeOut);
+
+    // hide announcement and mobile info bar
+    .sqs-announcement-bar,
+    .sqs-mobile-info-bar {
+      display: none;
+    }
+
+    // collapse site container
+    .site-container {
+      opacity: 0;
+      height: 0;
+      // height: 100%;
+      // .transition(height 0ms linear 150ms);
+      .transition2(opacity @mobileOpacityFadeOut linear 0ms, height 0ms linear @mobileOpacityFadeOut);
+      overflow: hidden;
+    }
+
+    // overflow wrapper around entire site
     .overflow-wrapper {
-      // position: fixed;
-      // width: 100%;
-      height: 100%;
-      overflow-y: hidden;
+      position: relative;
+      overflow: hidden;
+      background-color: @tweak-mobile-overlay-menu-color;
     }
 
-    &.tweak-mobile-bar-position-standard .mobile-bar-wrapper {
+    // set position of fixed mobile bar wrapper
+    &.tweak-mobile-bar-position-top-fixed .mobile-bar-wrapper,
+    &.tweak-mobile-bar-position-bottom-fixed .mobile-bar-wrapper {
       // position: absolute;
-      // top: 0;
-      // width: 100vw;
-    }
-  }
-
-  // hamburger has been tapped
-
-  #mobileNavToggle:checked {
-
-    ~ #overlayNav {
-      opacity: 1;
-      width: 100%;
-      visibility: visible;
-      pointer-events: auto;
-      left: 0;
-      .transition (left 0ms linear);
-
-      .overlay-nav-wrapper {
-        overflow-x: hidden;
-        overflow-y: auto;
-        .scale(1, 1);
-        opacity: 1;
-      }
     }
 
-    // toggle hamburger --> close icon
-    ~ .mobile-bar-wrapper .mobile-nav-toggle-label {
+    // set background of fixed mobile bar wrapper
+    &.tweak-mobile-bar-position-top-fixed:not(.tweak-transparent-fixed-mobile-bar) .mobile-bar-wrapper,
+    &.tweak-mobile-bar-position-bottom-fixed:not(.tweak-transparent-fixed-mobile-bar) .mobile-bar-wrapper {
+      background-color: @tweak-mobile-overlay-menu-color;
+      .transition (background-color @mobileBgColorFadeIn linear);
+    }
+
+    // swap hamburger --> close icon
+    .mobile-bar-wrapper .mobile-nav-toggle-label {
 
       .Icon--close {
         display: block;
@@ -411,38 +497,38 @@
       .Icon--hamburger { display: none; }
     }
 
-    ~ .site-container {
-      // overflow: hidden;
-      // height: 100%;
+    // mobile bar is fixed bottom with menu open
+    &.tweak-mobile-bar-position-bottom-fixed {
+
+      // adjust container and wrapper to absolute
+      .overlay-nav-container {
+        position: absolute;
+      }
+      .mobile-bar-wrapper {
+        position: absolute;
+        bottom: 0;
+      }
+    }
+
+    // overlay bits
+
+    .overflow-wrapper {
+      .transition (background-color @mobileBgColorFadeIn linear);
+    }
+
+    .overlay-nav-container {
+      overflow-y: scroll;
+      visibility: visible;
+      pointer-events: auto;
+      opacity: 1;
+      width: 100%;
+      left: 0;
+      .transition (left 0ms linear @mobileOpacityFadeOut);
+    }
+
+    .overlay-nav-wrapper {
+      opacity: 1;
+      .transition (opacity @mobileBgColorFadeIn linear);
     }
   }
-
-  .tweak-mobile-bar-top-fixed #mobileNavToggle:checked ~ .mobile-bar-wrapper {
-    position: relative;
-    // background-color: @tweak-mobile-overlay-menu-color;
-  }
-
-  // Checkbox hack for android < 4.1.2
-  // This hack was recently isolated as a problem
-
-  body {
-    -webkit-animation: bugfix infinite 1s;
-  }
-
-  @-webkit-keyframes bugfix {
-    from { padding: 0; }
-    to { padding: 0; }
-  }
-
 }
-
-@media only screen and (max-width: 640px) {
-
-  // Collapse sqs layouts
-  @import 'sqs-grid-breaker';
-
-}
-
-
-
-

@@ -70,6 +70,11 @@
 	box-sizing: border-box;
 }
 
+.backface-visibility(@display) {
+  backface-visibility: @display;
+  -webkit-backface-visibility: @display;
+}
+
 .content-box,
 .content-box:before,
 .content-box:after {
@@ -106,6 +111,13 @@
 	-ms-transition: @transition1, @transition2;
 	-o-transition: @transition1, @transition2;
 	transition: @transition1, @transition2;
+}
+
+.transition-delay (@delay) {
+  -webkit-transition-delay: @delay;
+  -moz-transition-delay: @delay;
+  -o-transition-delay: @delay;
+  transition-delay: @delay;
 }
 
 .transform(@string){

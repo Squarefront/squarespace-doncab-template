@@ -56,7 +56,7 @@
 // tweak: { "type" : "color", "category" : "Site: Header", "title" : "Site Tagline Color", "target" : ".site-tagline", "showOnlyWhenPresent" : ".site-tagline"  }
 @siteTaglineColor: #777777;
 
-// tweak: { "type" : "value", "category" : "Site: Header", "title" : "Logo Height", "min" : 30, "max" : 300, "target" : ".logo-image" }
+// tweak: { "type" : "value", "category" : "Site: Header", "title" : "Logo Height (max)", "min" : 30, "max" : 300, "target" : ".logo-image" }
 @logoHeight: 64px;
 
 // tweak: { "type" : "value", "category" : "Site: Header", "title" : "Header Horizontal Spacing", "step" : 1, "min" : 0, "max" : 50, "target" : ".site-header", "showOnlyWhenPresent" : ".ancillary-header-left-layout-horizontal, .ancillary-header-center-layout-horizontal, .ancillary-header-right-layout-horizontal" }
@@ -87,6 +87,12 @@
 
 // tweak: { "category": "Site: Header", "label" : "Cart Quantity Text Color", "title" : "tweak-header-cart-flag-text-color", "type" : "color", "target" : ".site-header .Cart", "showOnlyWhenPresent" : ".tweak-header-cart-style-cart.has-cart:not(.ancillary-header-cart-position-hide)" }
 @tweak-header-cart-flag-text-color: #111111;
+
+
+/* Site Footer
+***********************************/
+
+// tweak: { "category" : "Site: Footer", "type" : "checkbox", "label" : "Show Global Site Footer", "title" : "show-site-footer", "false" : true, "target" : ".site-footer" }
 
 
 /* Ancillary Tweaks (Header Layout)
@@ -267,53 +273,53 @@
 /* Page
 ***********************************/
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Album Banner", "active" : false, "target" : ".collection-type-album .page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-album" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Album Banner", "active" : false, "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-album" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Blog Banner", "active" : false, "target" : ".collection-type-blog .page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-blog" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Blog Banner", "active" : false, "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-blog" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Events Banner", "active" : false, "target" : ".collection-type-events .page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-events" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Events Banner", "active" : false, "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-events" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Gallery Banner", "active" : false, "target" : ".collection-type-gallery .page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-gallery" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Gallery Banner", "active" : false, "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-gallery" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Index Banner", "active" : false, "target" : ".collection-type-index .page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-index" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Index Banner", "active" : false, "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-index" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Page Banner", "active" : false, "target" : ".collection-type-page .page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-page" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Page Banner", "active" : false, "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-page" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Project Banner", "active" : true, "target" : ".collection-type-project .page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-project" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Project Banner", "active" : true, "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-project" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Products Banner", "active" : false, "target" : ".collection-type-products .page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-products" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Products Banner", "active" : false, "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-products" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Album Title", "active" : true, "target" : ".collection-type-album .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album .page-title" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Album Title", "active" : true, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album .page-title" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Album Description", "active" : true, "target" : ".collection-type-album .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album .page-description" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Album Description", "active" : true, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-album .page-description" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Blog Title", "active" : true, "target" : ".collection-type-blog .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-blog .page-title" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Blog Title", "active" : true, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-blog .page-title" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Blog Description", "active" : true, "target" : ".collection-type-blog .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-blog .page-description" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Blog Description", "active" : true, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-blog .page-description" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Events Title", "active" : true, "target" : ".collection-type-events .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-events .page-title" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Events Title", "active" : true, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-events .page-title" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Events Description", "active" : true, "target" : ".collection-type-events .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-events .page-description" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Events Description", "active" : true, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-events .page-description" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Gallery Title", "active" : true, "target" : ".collection-type-gallery .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-gallery .page-title" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Gallery Title", "active" : true, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-gallery .page-title" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Gallery Description", "active" : true, "target" : ".collection-type-gallery .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-gallery .page-description" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Gallery Description", "active" : true, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-gallery .page-description" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Index Title", "active" : true, "target" : ".collection-type-index .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index .page-title" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Index Title", "active" : true, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-index .page-title" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Index Description", "active" : true, "target" : ".collection-type-index .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index .page-description" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Index Description", "active" : true, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-index .page-description" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Page Title", "active" : true, "target" : ".collection-type-page .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-page .page-title" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Page Title", "active" : true, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-page .page-title" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Page Description", "active" : true, "target" : ".collection-type-page .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-page .page-description" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Page Description", "active" : true, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-page .page-description" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Project Title", "active" : true, "target" : ".collection-type-project .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-project .page-title" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Project Title", "active" : true, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-project .page-title" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Project Description", "active" : true, "target" : ".collection-type-project .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-project .page-description" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Project Description", "active" : true, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-project .page-description" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Products Title", "active" : true, "target" : ".collection-type-products .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-products .page-title" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Products Title", "active" : true, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-products .page-title" }
 
-// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Products Description", "active" : true, "target" : ".collection-type-products .page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-products .page-description" }
+// tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Products Description", "active" : true, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-products .page-description" }
 
 // tweak: { "type" : "checkbox", "category" : "Page", "title" : "Show Collection Page Header", "label" : "Show Page Header", "active" : false, "target" : ".site-page", "showOnlyWhenPresent" : "body:not(.collection-type-page) .site-page" }
 
@@ -325,7 +331,7 @@
 
 // tweak: { "type": "dropdown",  "category" : "Page: Banner", "title" : "Banner Height", "label" : "Height", "options": ["Small", "Medium", "Large", "Extra Large"], "default": "Large", "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner", "js" : true }
 
-// tweak: { "type" : "dropdown", "category" : "Page: Banner", "title" : "Banner Image Alignment", "label" : "Image Alignment", "options" : [ "Top", "Right", "Bottom", "Left", "Center" ], "default" : "Center", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner", "target" : ".page-banner-image-containter", "js" : true }
+// tweak: { "type" : "dropdown", "category" : "Page: Banner", "title" : "Banner Image Alignment", "label" : "Image Alignment", "options" : [ "Top", "Right", "Bottom", "Left", "Center" ], "default" : "Center", "target" : ".page-banner-image-containter", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner", "js" : true }
 
 // tweak: { "type" : "checkbox", "category" : "Page: Banner", "title" : "Banner Image Crop", "label" : "Crop Image", "active" : false, "target" : ".page-banner-image-container", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner", "js" : true }
 
@@ -342,7 +348,7 @@
 
 // tweak: { "type" : "dropdown", "category" : "Page: Banner Text", "title" : "Page Banner Text Width", "label" : "Width", "options" : ["Small", "Medium", "Large", "Extra Large"], "default" : "Large", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner" }
 
-// tweak: { "type" : "font", "category" : "Page: Banner Text", "title" : "Banner Title Font", "label" : "Title Font", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner" }
+// tweak: { "type" : "font", "category" : "Page: Banner Text", "title" : "Banner Title Font", "label" : "Title Font", "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner.show-album-title, .collection-type-blog.show-blog-banner.show-blog-title, .collection-type-events.show-events-banner.show-events-title, .collection-type-gallery.show-gallery-banner.show-gallery-title, .collection-type-index.show-index-banner.show-index-title, .collection-type-page.show-page-banner.show-page-title, .collection-type-project.show-project-banner.show-project-title, .collection-type-products.show-products-banner.show-products-title" }
 .banner-page-title-font {
   font-family: Arial, sans-serif;
   font-weight: 400;
@@ -353,18 +359,18 @@
   text-transform: none;
 }
 
-// tweak: { "type" : "checkbox", "category" : "Page: Banner Text", "title" : "Scale Banner Title Font Size", "label" : "Scale Title Size", "active" : false, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner" }
+// tweak: { "type" : "checkbox", "category" : "Page: Banner Text", "title" : "Scale Banner Title Font Size", "label" : "Scale Title Size", "active" : false, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner.show-album-title, .collection-type-blog.show-blog-banner.show-blog-title, .collection-type-events.show-events-banner.show-events-title, .collection-type-gallery.show-gallery-banner.show-gallery-title, .collection-type-index.show-index-banner.show-index-title, .collection-type-page.show-page-banner.show-page-title, .collection-type-project.show-project-banner.show-project-title, .collection-type-products.show-products-banner.show-products-title" }
 
-// tweak: { "type" : "value", "category" : "Page: Banner Text", "title" : "Banner Page Title Minimum", "label" : "Title Min", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.scale-banner-title-font-size.show-album-banner, .collection-type-blog.scale-banner-title-font-size.show-blog-banner, .collection-type-events.scale-banner-title-font-size.show-events-banner, .collection-type-gallery.scale-banner-title-font-size.show-gallery-banner, .collection-type-index.scale-banner-title-font-size.show-index-banner, .collection-type-page.scale-banner-title-font-size.show-page-banner, .collection-type-project.scale-banner-title-font-size.show-project-banner, .collection-type-products.scale-banner-title-font-size.show-products-banner" }
+// tweak: { "type" : "value", "category" : "Page: Banner Text", "title" : "Banner Page Title Minimum", "label" : "Title Min", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album.scale-banner-title-font-size.show-album-banner.show-album-title, .collection-type-blog.scale-banner-title-font-size.show-blog-banner.show-blog-title, .collection-type-events.scale-banner-title-font-size.show-events-banner.show-events-title, .collection-type-gallery.scale-banner-title-font-size.show-gallery-banner.show-gallery-title, .collection-type-index.scale-banner-title-font-size.show-index-banner.show-index-title, .collection-type-page.scale-banner-title-font-size.show-page-banner.show-page-title, .collection-type-project.scale-banner-title-font-size.show-project-banner.show-project-title, .collection-type-products.scale-banner-title-font-size.show-products-banner.show-products-title" }
 @bannerPageTitleMin: 30px;
 
-// tweak: { "type" : "color", "category" : "Page: Banner Text", "title" : "Banner Title Color", "label" : "Title Color", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner" }
+// tweak: { "type" : "color", "category" : "Page: Banner Text", "title" : "Banner Title Color", "label" : "Title Color", "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner.show-album-title, .collection-type-blog.show-blog-banner.show-blog-title, .collection-type-events.show-events-banner.show-events-title, .collection-type-gallery.show-gallery-banner.show-gallery-title, .collection-type-index.show-index-banner.show-index-title, .collection-type-page.show-page-banner.show-page-title, .collection-type-project.show-project-banner.show-project-title, .collection-type-products.show-products-banner.show-products-title" }
 @bannerPageTitleColor: #ffffff;
 
-// tweak: { "type" : "value", "category" : "Page: Banner Text", "title" : "Banner Title Spacing", "label" : "Title Spacing", "step" : 0.1, "min" : 0, "max" : 3, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner" }
+// tweak: { "type" : "value", "category" : "Page: Banner Text", "title" : "Banner Title Spacing", "label" : "Title Spacing", "step" : 0.1, "min" : 0, "max" : 3, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner.show-album-title, .collection-type-blog.show-blog-banner.show-blog-title, .collection-type-events.show-events-banner.show-events-title, .collection-type-gallery.show-gallery-banner.show-gallery-title, .collection-type-index.show-index-banner.show-index-title, .collection-type-page.show-page-banner.show-page-title, .collection-type-project.show-project-banner.show-project-title, .collection-type-products.show-products-banner.show-products-title" }
 @bannerTitleSpacing: .5em;
 
-// tweak: { "type" : "font", "category" : "Page: Banner Text", "title" : "Banner Description Font", "label" : "Description Font", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner" }
+// tweak: { "type" : "font", "category" : "Page: Banner Text", "title" : "Banner Description Font", "label" : "Description Font", "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner.show-album-description, .collection-type-blog.show-blog-banner.show-blog-description, .collection-type-events.show-events-banner.show-events-description, .collection-type-gallery.show-gallery-banner.show-gallery-description, .collection-type-index.show-index-banner.show-index-description, .collection-type-page.show-page-banner.show-page-description, .collection-type-project.show-project-banner.show-project-description, .collection-type-products.show-products-banner.show-products-description" }
 .banner-page-description-font {
   font-family: Arial, sans-serif;
   font-weight: 400;
@@ -375,12 +381,12 @@
   text-transform: none;
 }
 
-// tweak: { "type" : "checkbox", "category" : "Page: Banner Text", "title" : "Scale Banner Description Font Size", "label" : "Scale Description Size", "active" : false, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner" }
+// tweak: { "type" : "checkbox", "category" : "Page: Banner Text", "title" : "Scale Banner Description Font Size", "label" : "Scale Description Size", "active" : false, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner.show-album-description, .collection-type-blog.show-blog-banner.show-blog-description, .collection-type-events.show-events-banner.show-events-description, .collection-type-gallery.show-gallery-banner.show-gallery-description, .collection-type-index.show-index-banner.show-index-description, .collection-type-page.show-page-banner.show-page-description, .collection-type-project.show-project-banner.show-project-description, .collection-type-products.show-products-banner.show-products-description" }
 
-// tweak: { "type" : "value", "category" : "Page: Banner Text", "title" : "Banner Page Description Min", "label" : "Description Min", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.scale-banner-description-font-size.show-album-banner, .collection-type-blog.scale-banner-description-font-size.show-blog-banner, .collection-type-events.scale-banner-description-font-size.show-events-banner, .collection-type-gallery.scale-banner-description-font-size.show-gallery-banner, .collection-type-index.scale-banner-description-font-size.show-index-banner, .collection-type-page.scale-banner-description-font-size.show-page-banner, .collection-type-project.scale-banner-description-font-size.show-project-banner, .collection-type-products.scale-banner-description-font-size.show-products-banner" }
+// tweak: { "type" : "value", "category" : "Page: Banner Text", "title" : "Banner Page Description Min", "label" : "Description Min", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-album.scale-banner-description-font-size.show-album-banner.show-album-description, .collection-type-blog.scale-banner-description-font-size.show-blog-banner.show-blog-description, .collection-type-events.scale-banner-description-font-size.show-events-banner.show-events-description, .collection-type-gallery.scale-banner-description-font-size.show-gallery-banner.show-gallery-description, .collection-type-index.scale-banner-description-font-size.show-index-banner.show-index-description, .collection-type-page.scale-banner-description-font-size.show-page-banner.show-page-description, .collection-type-project.scale-banner-description-font-size.show-project-banner.show-project-description, .collection-type-products.scale-banner-description-font-size.show-products-banner.show-products-description" }
 @bannerPageDescriptionMin: 20px;
 
-// tweak: { "type" : "color", "category" : "Page: Banner Text", "title" : "Banner Description Color", "label" : "Description Color", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner" }
+// tweak: { "type" : "color", "category" : "Page: Banner Text", "title" : "Banner Description Color", "label" : "Description Color", "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner.show-album-description, .collection-type-blog.show-blog-banner.show-blog-description, .collection-type-events.show-events-banner.show-events-description, .collection-type-gallery.show-gallery-banner.show-gallery-description, .collection-type-index.show-index-banner.show-index-description, .collection-type-page.show-page-banner.show-page-description, .collection-type-project.show-project-banner.show-project-description, .collection-type-products.show-products-banner.show-products-description" }
 @bannerPageDescriptionColor: #ffffff;
 
 // tweak: { "type" : "checkbox", "category" : "Page: Banner Text", "title" : "Banner Text Background", "label" : "Highlight Text", "active" : "false", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.show-album-banner, .collection-type-blog.show-blog-banner, .collection-type-events.show-events-banner, .collection-type-gallery.show-gallery-banner, .collection-type-index.show-index-banner, .collection-type-page.show-page-banner, .collection-type-project.show-project-banner, .collection-type-products.show-products-banner" }
@@ -392,7 +398,7 @@
 /* Page Intro
 ***********************************/
 
-// tweak: { "type" : "font", "category" : "Page: Intro Text", "title" : "Page Title Font", "label" : "Title Font", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
+// tweak: { "type" : "font", "category" : "Page: Intro Text", "title" : "Page Title Font", "label" : "Title Font", "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner).show-album-title, .collection-type-blog:not(.show-blog-banner).show-blog-title, .collection-type-events:not(.show-events-banner).show-events-title, .collection-type-gallery:not(.show-gallery-banner).show-gallery-title, .collection-type-page:not(.show-page-banner).show-page-title, .collection-type-project:not(.show-project-banner).show-project-title, .collection-type-products:not(.show-products-banner).show-products-title" }
 .page-title-font {
   font-family: Arial, sans-serif;
   font-weight: 400;
@@ -403,18 +409,18 @@
   text-transform: none;
 }
 
-// tweak: { "type" : "checkbox", "category" : "Page: Intro Text", "title" : "Scale Page Title Font Size", "label" : "Scale Title Size", "active" : false, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
+// tweak: { "type" : "checkbox", "category" : "Page: Intro Text", "title" : "Scale Page Title Font Size", "label" : "Scale Title Size", "active" : false, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner).show-album-title, .collection-type-blog:not(.show-blog-banner).show-blog-title, .collection-type-events:not(.show-events-banner).show-events-title, .collection-type-gallery:not(.show-gallery-banner).show-gallery-title, .collection-type-page:not(.show-page-banner).show-page-title, .collection-type-project:not(.show-project-banner).show-project-title, .collection-type-products:not(.show-products-banner).show-products-title" }
 
-// tweak: { "type" : "value", "category" : "Page: Intro Text", "title" : "Page Title Minimum", "label" : "Title Min", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.scale-page-title-font-size:not(.show-album-banner), .collection-type-blog.scale-page-title-font-size:not(.show-blog-banner), .collection-type-events.scale-page-title-font-size:not(.show-events-banner), .collection-type-gallery.scale-page-title-font-size:not(.show-gallery-banner), .collection-type-page.scale-page-title-font-size:not(.show-page-banner), .collection-type-project.scale-page-title-font-size:not(.show-project-banner), .collection-type-products.scale-page-title-font-size:not(.show-products-banner)" }
+// tweak: { "type" : "value", "category" : "Page: Intro Text", "title" : "Page Title Minimum", "label" : "Title Min", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album.scale-page-title-font-size:not(.show-album-banner).show-album-title, .collection-type-blog.scale-page-title-font-size:not(.show-blog-banner).show-blog-title, .collection-type-events.scale-page-title-font-size:not(.show-events-banner).show-events-title, .collection-type-gallery.scale-page-title-font-size:not(.show-gallery-banner).show-gallery-title, .collection-type-page.scale-page-title-font-size:not(.show-page-banner).show-page-title, .collection-type-project.scale-page-title-font-size:not(.show-project-banner).show-project-title, .collection-type-products.scale-page-title-font-size:not(.show-products-banner).show-products-title" }
 @pageTitleMin: 30px;
 
-// tweak: { "type" : "color", "category" : "Page: Intro Text", "title" : "Page Title Color", "label" : "Title Color", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
+// tweak: { "type" : "color", "category" : "Page: Intro Text", "title" : "Page Title Color", "label" : "Title Color", "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner).show-album.title, .collection-type-blog:not(.show-blog-banner).show-blog.title, .collection-type-events:not(.show-events-banner).show-events-title, .collection-type-gallery:not(.show-gallery-banner).show-gallery-title, .collection-type-page:not(.show-page-banner).show-page-title, .collection-type-project:not(.show-project-banner).show-project-title, .collection-type-products:not(.show-products-banner).show-products-title" }
 @pageTitleColor: #222222;
 
-// tweak: { "type" : "value", "category" : "Page: Intro Text", "title" : "Page Title Spacing", "label" : "Title Spacing", "step" : 0.1, "min" : 0, "max" : 3, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
+// tweak: { "type" : "value", "category" : "Page: Intro Text", "title" : "Page Title Spacing", "label" : "Title Spacing", "step" : 0.1, "min" : 0, "max" : 3, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner).show-album-title, .collection-type-blog:not(.show-blog-banner).show-blog-title, .collection-type-events:not(.show-events-banner).show-events-title, .collection-type-gallery:not(.show-gallery-banner).show-gallery-title, .collection-type-page:not(.show-page-banner).show-page-title, .collection-type-project:not(.show-project-banner).show-project-title, .collection-type-products:not(.show-products-banner).show-products-title" }
 @pageTitleSpacing: .5em;
 
-// tweak: { "type" : "font", "category" : "Page: Intro Text", "title" : "Page Description Font", "label" : "Description Font", "target" : ".page-text-wrapper", "loadAllVariants" : true, "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
+// tweak: { "type" : "font", "category" : "Page: Intro Text", "title" : "Page Description Font", "label" : "Description Font", "target" : ".page-text-wrapper .page-description", "loadAllVariants" : true, "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner).show-album-description, .collection-type-blog:not(.show-blog-banner).show-blog-description, .collection-type-events:not(.show-events-banner).show-events-description, .collection-type-gallery:not(.show-gallery-banner).show-gallery-description, .collection-type-page:not(.show-page-banner).show-page-description, .collection-type-project:not(.show-project-banner).show-project-description, .collection-type-products:not(.show-products-banner).show-products-description" }
 .page-description-font {
   font-family: "Times New Roman", Times, serif;
   font-weight: 400;
@@ -425,23 +431,23 @@
   text-transform: none;
 }
 
-// tweak: { "type" : "checkbox", "category" : "Page: Intro Text", "title" : "Scale Page Description Font Size", "label" : "Scale Description Size", "active" : false, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
+// tweak: { "type" : "checkbox", "category" : "Page: Intro Text", "title" : "Scale Page Description Font Size", "label" : "Scale Description Size", "active" : false, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner).show-album-description, .collection-type-blog:not(.show-blog-banner).show-blog-description, .collection-type-events:not(.show-events-banner).show-events-description, .collection-type-gallery:not(.show-gallery-banner).show-gallery-description, .collection-type-page:not(.show-page-banner).show-page-description, .collection-type-project:not(.show-project-banner).show-project-description, .collection-type-products:not(.show-products-banner).show-products-description" }
 
-// tweak: { "type" : "value", "category" : "Page: Intro Text", "title" : "Page Description Minimum", "label" : "Description Min", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album.scale-page-description-font-size:not(.show-album-banner), .collection-type-blog.scale-page-description-font-size:not(.show-blog-banner), .collection-type-events.scale-page-description-font-size:not(.show-events-banner), .collection-type-gallery.scale-page-description-font-size:not(.show-gallery-banner), .collection-type-page.scale-page-description-font-size:not(.show-page-banner), .collection-type-project.scale-page-description-font-size:not(.show-project-banner), .collection-type-products.scale-page-description-font-size:not(.show-products-banner)" }
+// tweak: { "type" : "value", "category" : "Page: Intro Text", "title" : "Page Description Minimum", "label" : "Description Min", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-album.scale-page-description-font-size:not(.show-album-banner).show-album-description, .collection-type-blog.scale-page-description-font-size:not(.show-blog-banner).show-blog-description, .collection-type-events.scale-page-description-font-size:not(.show-events-banner).show-events-description, .collection-type-gallery.scale-page-description-font-size:not(.show-gallery-banner).show-gallery-description, .collection-type-page.scale-page-description-font-size:not(.show-page-banner).show-page-description, .collection-type-project.scale-page-description-font-size:not(.show-project-banner).show-project-description, .collection-type-products.scale-page-description-font-size:not(.show-products-banner).show-products-description" }
 @pageDescriptionMin: 20px;
 
-// tweak: { "type" : "color", "category" : "Page: Intro Text", "title" : "Page Description Color", "label" : "Description Color", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
+// tweak: { "type" : "color", "category" : "Page: Intro Text", "title" : "Page Description Color", "label" : "Description Color", "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner).show-album-description, .collection-type-blog:not(.show-blog-banner).show-blog-description, .collection-type-events:not(.show-events-banner).show-events-description, .collection-type-gallery:not(.show-gallery-banner).show-gallery-description, .collection-type-page:not(.show-page-banner).show-page-description, .collection-type-project:not(.show-project-banner).show-project-description, .collection-type-products:not(.show-products-banner).show-products-description" }
 @pageDescriptionColor: #111111;
 
-// tweak: { "type" : "dropdown", "category" : "Page: Intro Text", "title" : "Intro Text Width", "label" : "Text Width", "options" : ["Small", "Medium", "Large", "Extra Large"], "default" : "Large", "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
+// tweak: { "type" : "dropdown", "category" : "Page: Intro Text", "title" : "Intro Text Width", "label" : "Text Width", "options" : ["Small", "Medium", "Large", "Extra Large"], "default" : "Large", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
 
-// tweak: { "type" : "dropdown", "category" : "Page: Intro Text", "title" : "Intro Text Height", "label" : "Text Height", "options" : ["Small", "Medium", "Large", "Extra Large"], "default" : "Medium", "target" : ".page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
+// tweak: { "type" : "dropdown", "category" : "Page: Intro Text", "title" : "Intro Text Height", "label" : "Text Height", "options" : ["Small", "Medium", "Large", "Extra Large"], "default" : "Medium", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-album:not(.show-album-banner), .collection-type-blog:not(.show-blog-banner), .collection-type-events:not(.show-events-banner), .collection-type-gallery:not(.show-gallery-banner), .collection-type-page:not(.show-page-banner), .collection-type-project:not(.show-project-banner), .collection-type-products:not(.show-products-banner)" }
 
 
 /* Index Intro
 ***********************************/
 
-// tweak: { "type" : "font", "category" : "Index: Intro Text", "title" : "Index Title Font", "label" : "Title Font", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
+// tweak: { "type" : "font", "category" : "Index: Intro Text", "title" : "Index Title Font", "label" : "Title Font", "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner).show-index-title" }
 .index-page-title-font {
   font-family: Arial, sans-serif;
   font-weight: 400;
@@ -452,18 +458,18 @@
   text-transform: none;
 }
 
-// tweak: { "type" : "checkbox", "category" : "Index: Intro Text", "title" : "Scale Index Title Font Size", "label" : "Scale Title Size", "active" : false, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
+// tweak: { "type" : "checkbox", "category" : "Index: Intro Text", "title" : "Scale Index Title Font Size", "label" : "Scale Title Size", "active" : false, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner).show-index-title" }
 
-// tweak: { "type" : "value", "category" : "Index: Intro Text", "title" : "Index Title Minimum", "label" : "Title Min Size", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index.scale-index-title-font-size:not(.show-index-banner)" }
+// tweak: { "type" : "value", "category" : "Index: Intro Text", "title" : "Index Title Minimum", "label" : "Title Min Size", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-index.scale-index-title-font-size:not(.show-index-banner).show-index-title" }
 @indexPageTitleMin: 30px;
 
-// tweak: { "type" : "color", "category" : "Index: Intro Text", "title" : "Index Title Color", "label" : "Title Color", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
+// tweak: { "type" : "color", "category" : "Index: Intro Text", "title" : "Index Title Color", "label" : "Title Color", "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner).show-index-title" }
 @indexPageTitleColor: #222222;
 
-// tweak: { "type" : "value", "category" : "Index: Intro Text", "title" : "Index Title Spacing", "label" : "Title Spacing", "step" : 0.1, "min" : 0, "max" : 3, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
+// tweak: { "type" : "value", "category" : "Index: Intro Text", "title" : "Index Title Spacing", "label" : "Title Spacing", "step" : 0.1, "min" : 0, "max" : 3, "target" : ".page-text-wrapper .page-title", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner).show-index-title" }
 @indexTitleSpacing: .5em;
 
-// tweak: { "type" : "font", "category" : "Index: Intro Text", "title" : "Index Description Font", "label" : "Description Font", "target" : ".page-text-wrapper", "loadAllVariants" : true, "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
+// tweak: { "type" : "font", "category" : "Index: Intro Text", "title" : "Index Description Font", "label" : "Description Font", "target" : ".page-text-wrapper .page-description", "loadAllVariants" : true, "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner).show-index-description" }
 .index-page-description-font {
   font-family: "Times New Roman", Times, serif;
   font-weight: 400;
@@ -474,17 +480,17 @@
   text-transform: none;
 }
 
-// tweak: { "type" : "checkbox", "category" : "Index: Intro Text", "title" : "Scale Index Description Font Size", "label" : "Scale Description Size", "active" : false, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
+// tweak: { "type" : "checkbox", "category" : "Index: Intro Text", "title" : "Scale Index Description Font Size", "label" : "Scale Description Size", "active" : false, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner).show-index-description" }
 
-// tweak: { "type" : "value", "category" : "Index: Intro Text", "title" : "Index Description Minimum", "label" : "Description Min Size", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index.scale-index-description-font-size:not(.show-index-banner)" }
+// tweak: { "type" : "value", "category" : "Index: Intro Text", "title" : "Index Description Minimum", "label" : "Description Min Size", "step" : 1, "min" : 8, "max" : 72, "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-index.scale-index-description-font-size:not(.show-index-banner).show-index-description" }
 @indexPageDescriptionMin: 20px;
 
-// tweak: { "type" : "color", "category" : "Index: Intro Text", "title" : "Index Description Color", "label" : "Description Color", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
+// tweak: { "type" : "color", "category" : "Index: Intro Text", "title" : "Index Description Color", "label" : "Description Color", "target" : ".page-text-wrapper .page-description", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner).show-index-description" }
 @indexPageDescriptionColor: #111111;
 
-// tweak: { "type" : "dropdown", "category" : "Index: Intro Text", "title" : "Index Intro Text Width", "label" : "Text Width", "options" : ["Small", "Medium", "Large", "Extra Large"], "default" : "Large", "target" : ".collection-type-index .page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
+// tweak: { "type" : "dropdown", "category" : "Index: Intro Text", "title" : "Index Intro Text Width", "label" : "Text Width", "options" : ["Small", "Medium", "Large", "Extra Large"], "default" : "Large", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
 
-// tweak: { "type" : "dropdown", "category" : "Index: Intro Text", "title" : "Index Intro Text Height", "label" : "Text Height", "options" : ["Small", "Medium", "Large", "Extra Large"], "default" : "Medium", "target" : ".collection-type-index .page-banner-wrapper", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
+// tweak: { "type" : "dropdown", "category" : "Index: Intro Text", "title" : "Index Intro Text Height", "label" : "Text Height", "options" : ["Small", "Medium", "Large", "Extra Large"], "default" : "Medium", "target" : ".page-text-wrapper", "showOnlyWhenPresent" : ".collection-type-index:not(.show-index-banner)" }
 
 
 /* Index Layout
@@ -506,6 +512,7 @@
 // tweak: { "type" : "checkbox", "category" : "Index: Layout", "title" : "Full Bleed Index", "active" : false, "target" : ".index-list", "showOnlyWhenPresent" : ".index-list", "js" : true }
 
 
+
 /* Index Item Image
 ***********************************/
 
@@ -513,10 +520,16 @@
 
 // tweak: { "type" : "checkbox", "category" : "Index: Item Image", "title" : "Index Item Image Crop", "label" : "Crop Image", "active" : false, "target" : ".index-item", "showOnlyWhenPresent" : ".index-item-image-alignment-center .index-list, .index-item-image-alignment-left .index-list, .index-item-image-alignment-right .index-list", "js" : true }
 
-// tweak: { "type" : "checkbox", "category" : "Index: Item Image", "title" : "Fade Index Item Image on Hover", "label" : "Fade Image on Hover", "active" : true, "target" : ".index-item", "showOnlyWhenPresent" : ".collection-type-index .index-list" }
+//OFFtweak: { "type" : "checkbox", "category" : "Index: Item Image", "title" : "Fade Index Item Image on Hover", "label" : "Fade Image on Hover", "active" : true, "target" : ".index-item", "showOnlyWhenPresent" : ".collection-type-index .index-list" }
 
-// tweak: { "type" : "value", "category" : "Index: Item Image", "title" : "Index Item Image Fade", "label" : "Image Fade Amount", "step" : 10, "min" : 0, "max" : 100, "target" : ".index-item", "showOnlyWhenPresent" : ".collection-type-index.fade-index-item-image-on-hover" }
+//OFFtweak: { "type" : "value", "category" : "Index: Item Image", "title" : "Index Item Image Fade", "label" : "Image Fade Amount", "step" : 10, "min" : 0, "max" : 100, "target" : ".index-item", "showOnlyWhenPresent" : ".collection-type-index.fade-index-item-image-on-hover" }
 @indexItemImageFade: 20;
+
+// tweak: { "type" : "value", "category" : "Index: Item Image", "title" : "Index Item Image Opacity", "label" : "Image Opacity", "step" : 5, "min" : 0, "max" : 100, "target" : ".index-item", "showOnlyWhenPresent" : ".collection-type-index .index-item-image-wrapper" }
+@indexItemImageOpacity: 100;
+
+// tweak: { "type" : "value", "category" : "Index: Item Image", "title" : "Index Item Image Opacity Hover", "label" : "Image Hover Opacity", "step" : 5, "min" : 0, "max" : 100, "target" : ".index-item", "showOnlyWhenPresent" : ".collection-type-index .index-item-image-wrapper" }
+@indexItemImageHoverOpacity: 100;
 
 // tweak: { "type" : "checkbox", "category" : "Index: Item Image", "title" : "Auto Color Index Item BG", "label" : "Auto Color Background", "active" : true, "target" : ".index-item", "showOnlyWhenPresent" : ".collection-type-index", "js" : true }
 
@@ -527,13 +540,11 @@
 /* Index Item Text
 ***********************************/
 
-// tweak: { "type" : "checkbox", "category" : "Index: Item Text", "title" : "Show Index Item Title", "label" : "Show Title", "active" : true, "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index .index-list" }
+// tweak: { "type" : "dropdown",  "category" : "Index: Item Text", "title" : "Index Item Title Display", "label" : "Title Display", "options": ["Hidden", "On Hover", "On Scroll", "Always On"], "default" : "Always On", "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index .index-list", "js" : true }
 
-// tweak: { "type" : "dropdown",  "category" : "Index: Item Text", "title" : "Index Item Title Alignment", "label" : "Text Alignment", "options": ["Top Left", "Left", "Bottom Left", "Top", "Center", "Bottom", "Top Right", "Right", "Bottom Right"], "default" : "Center", "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index.show-index-item-title .index-list" }
+// tweak: { "type" : "dropdown",  "category" : "Index: Item Text", "title" : "Index Item Title Alignment", "label" : "Text Alignment", "options": ["Top Left", "Left", "Bottom Left", "Top", "Center", "Bottom", "Top Right", "Right", "Bottom Right"], "default" : "Center", "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index:not(.index-item-title-display-hidden) .index-list" }
 
-// tweak: { "type" : "checkbox", "category" : "Index: Item Text", "title" : "Show Index Item Text on Hover", "label" : "Show Text on Hover", "active" : false, "target" : ".index-item", "showOnlyWhenPresent" : ".collection-type-index.show-index-item-title .index-list" }
-
-// tweak: { "type" : "font", "category" : "Index: Item Text", "title" : "Index Item Title Font", "label" : "Title Font", "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index.show-index-item-title .index-list" }
+// tweak: { "type" : "font", "category" : "Index: Item Text", "title" : "Index Item Title Font", "label" : "Title Font", "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index:not(.index-item-title-display-hidden) .index-list" }
 .index-item-title-font {
   font-family: Arial, sans-serif;
   font-weight: 400;
@@ -544,20 +555,20 @@
   text-transform: uppercase;
 }
 
-// tweak: { "type" : "checkbox", "category" : "Index: Item Text", "title" : "Scale Index Item Title Font Size", "label" : "Scale Title Size", "active" : false, "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index.show-index-item-title .index-list" }
+// tweak: { "type" : "checkbox", "category" : "Index: Item Text", "title" : "Scale Index Item Title Font Size", "label" : "Scale Title Size", "active" : false, "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index:not(.index-item-title-display-hidden) .index-list" }
 
-// tweak: { "type" : "value", "category" : "Index: Item Text", "title" : "Index Item Title Minimum", "label" : "Title Min Size", "step" : 1, "min" : 8, "max" : 72, "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index.show-index-item-title.scale-index-item-title-font-size .index-list" }
+// tweak: { "type" : "value", "category" : "Index: Item Text", "title" : "Index Item Title Minimum", "label" : "Title Min Size", "step" : 1, "min" : 8, "max" : 72, "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index:not(.index-item-title-display-hidden).scale-index-item-title-font-size .index-list" }
 @indexItemTitleMin: 30px;
 
-// tweak: { "type" : "color", "category" : "Index: Item Text", "title" : "Index Item Title Color", "label" : "Title Color", "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index.show-index-item-title .index-list" }
+// tweak: { "type" : "color", "category" : "Index: Item Text", "title" : "Index Item Title Color", "label" : "Title Color", "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index:not(.index-item-title-display-hidden) .index-list" }
 @indexItemTitleColor: #FFFFFF;
 
-// tweak: { "type" : "checkbox", "category" : "Index: Item Text", "title" : "Index Item Title Background", "label" : "Use Title Background", "active" : false, "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index.show-index-item-title .index-list", "js" : true }
+// tweak: { "type" : "checkbox", "category" : "Index: Item Text", "title" : "Index Item Title Background", "label" : "Use Title Background", "active" : false, "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index:not(.index-item-title-display-hidden) .index-list", "js" : true }
 
-// tweak: { "type" : "color", "category" : "Index: Item Text", "title" : "Index Item Title Background Color", "label" : "Title Background Color", "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index.index-item-title-background .index-list", "disableTransparency" : true }
+// tweak: { "type" : "color", "category" : "Index: Item Text", "title" : "Index Item Title Background Color", "label" : "Title Background Color", "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index:not(.index-item-title-display-hidden).index-item-title-background .index-list", "disableTransparency" : true }
 @indexItemTitleBgColor: #111111;
 
-// tweak: { "type" : "value", "category" : "Index: Item Text", "title" : "Index Item Title Spacing", "label" : "Title Spacing", "step" : 0.1, "min" : 0, "max" : 3, "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index.show-index-item-title .index-list" }
+// tweak: { "type" : "value", "category" : "Index: Item Text", "title" : "Index Item Title Spacing", "label" : "Title Spacing", "step" : 0.1, "min" : 0, "max" : 3, "target" : ".index-item-title", "showOnlyWhenPresent" : ".collection-type-index:not(.index-item-title-display-hidden) .index-list" }
 @indexItemTitleSpacing: .25em;
 
 // tweak: { "type" : "checkbox", "category" : "Index: Item Text", "title" : "Show Index Item Categories", "label" : "Show Categories", "active" : true, "target" : ".index-item-category", "showOnlyWhenPresent" : ".collection-type-index .index-list .index-item-category" }
@@ -602,10 +613,19 @@
 
 // tweak: { "type" : "dropdown", "category" : "Project: Layout", "title" : "Project Image Landscape Caption Style", "label" : "Landscape Caption Style", "options" : [ "Standard", "Offset", "Inset" ], "default" : "Standard", "target" : ".project-slide-landscape", "showOnlyWhenPresent" : ".collection-type-project.show-project-captions.project-image-alignment-center .project-slide-has-description.project-slide-pano, .collection-type-project.show-project-captions.project-image-alignment-center .project-slide-has-description.project-slide-landscape", "js" : true }
 
+// tweak: { "type" : "dropdown", "category" : "Project: Layout", "title" : "Project Left Image Portrait Caption Style", "label" : "Portrait and Square Caption Style", "options" : [ "Standard", "Offset", "Side" ], "default" : "Standard", "target" : ".project-slide-portrait, .project-slide-square", "showOnlyWhenPresent" : ".collection-type-project.show-project-captions.project-image-alignment-left .project-slide-has-description.project-slide-portrait, .collection-type-project.show-project-captions.project-image-alignment-left .project-slide-has-description.project-slide-square", "js" : true }
+
+// tweak: { "type" : "dropdown", "category" : "Project: Layout", "title" : "Project Left Image Landscape Caption Style", "label" : "Landscape Caption Style", "options" : [ "Standard", "Offset" ], "default" : "Standard", "target" : ".project-slide-landscape", "showOnlyWhenPresent" : ".collection-type-project.show-project-captions.project-image-alignment-left .project-slide-has-description.project-slide-pano, .collection-type-project.show-project-captions.project-image-alignment-left .project-slide-has-description.project-slide-landscape", "js" : true }
+
+// tweak: { "type" : "dropdown", "category" : "Project: Layout", "title" : "Project Right Image Portrait Caption Style", "label" : "Portrait and Square Caption Style", "options" : [ "Standard", "Offset", "Side" ], "default" : "Standard", "target" : ".project-slide-portrait, .project-slide-square", "showOnlyWhenPresent" : ".collection-type-project.show-project-captions.project-image-alignment-right .project-slide-has-description.project-slide-portrait, .collection-type-project.show-project-captions.project-image-alignment-right .project-slide-has-description.project-slide-square", "js" : true }
+
+// tweak: { "type" : "dropdown", "category" : "Project: Layout", "title" : "Project Right Image Landscape Caption Style", "label" : "Landscape Caption Style", "options" : [ "Standard", "Offset" ], "default" : "Standard", "target" : ".project-slide-landscape", "showOnlyWhenPresent" : ".collection-type-project.show-project-captions.project-image-alignment-right .project-slide-has-description.project-slide-pano, .collection-type-project.show-project-captions.project-image-alignment-right .project-slide-has-description.project-slide-landscape", "js" : true }
+
 // tweak: { "type" : "checkbox", "category" : "Project: Layout", "title" : "Collapse Landscape Spacing", "active" : false, "target" : ".project-slide-landscape", "showOnlyWhenPresent" : ".collection-type-project .project-slide-landscape:not(.project-slide-has-description)", "js" : true }
 
-// tweak: { "type" : "checkbox", "category" : "Project: Layout", "title" : "Full Bleed Project", "active" : false, "target" : ".project-container", "showOnlyWhenPresent" : ".collection-type-project.project-image-alignment-center", "target" : ".project-slide", "js" : true }
+// tweak: { "type" : "checkbox", "category" : "Project: Layout", "title" : "Full Bleed Project", "active" : false, "target" : ".project-slide, .project-container", "showOnlyWhenPresent" : ".collection-type-project.project-image-alignment-center", "js" : true }
 
+// tweak: { "type" : "checkbox", "category" : "Project: Layout", "label" : "Cascade Images and Captions", "title" : "tweak-project-slide-transition", "active" : true, "target" : ".project-slide", "showOnlyWhenPresent" : ".collection-type-project", "js" : true }
 
 // Project: Fonts Tweaks
 
@@ -654,7 +674,14 @@
 /* Index: Navigation
 ***********************************/
 
-// tweak: { "type" : "font", "category" : "Index: Navigation", "title" : "Index Link Font", "label" : "Link Font", "target" : ".index-navigation", "showOnlyWhenPresent" : ".index-navigation" }
+// tweak: { "type" : "checkbox", "category" : "Index: Navigation", "title" : "Show Index Navigation", "active" : true, "target" : ".index-item-navigation", "showOnlyWhenPresent" : ".index-item-navigation" }
+
+// tweak: { "type" : "dropdown", "category" : "Index: Navigation", "title" : "Index Link Spacing", "label" : "Spacing", "options" : ["Small", "Medium", "Large", "Custom"], "default" : "Medium", "target" : ".index-navigation", "showOnlyWhenPresent" : ".show-index-navigation .index-navigation" }
+
+// tweak: { "type" : "value", "category" : "Index: Navigation", "title" : "Index Link Custom Spacing", "label" : "Custom Spacing", "step" : 1, "min" : 0, "max" : 150, "target" : ".index-navigation", "showOnlyWhenPresent" : ".show-index-navigation.index-link-spacing-custom .index-navigation" }
+@indexLinkSpacing: 20px;
+
+// tweak: { "type" : "font", "category" : "Index: Navigation", "title" : "Index Link Font", "label" : "Link Font", "target" : ".index-navigation", "showOnlyWhenPresent" : ".show-index-navigation .index-navigation" }
 .index-link-font {
   font-family: Arial, sans-serif;
   font-weight: 700;
@@ -664,28 +691,27 @@
   text-transform: uppercase;
 }
 
-// tweak: { "type" : "checkbox", "category" : "Index: Navigation", "title" : "Scale Index Link Font Size", "label" : "Scale Link Size", "active" : false, "target" : ".index-navigation", "showOnlyWhenPresent" : ".index-navigation" }
+// tweak: { "type" : "checkbox", "category" : "Index: Navigation", "title" : "Scale Index Link Font Size", "label" : "Scale Link Size", "active" : false, "target" : ".index-navigation", "showOnlyWhenPresent" : ".show-index-navigation .index-navigation" }
 
-// tweak: { "type" : "value", "category" : "Index: Navigation", "title" : "Index Link Font Minimum", "label" : "Index Link Min", "step" : 1, "min" : 8, "max" : 72, "target" : ".index-navigation", "showOnlyWhenPresent" : ".scale-index-link-font-size .index-navigation" }
+// tweak: { "type" : "value", "category" : "Index: Navigation", "title" : "Index Link Font Minimum", "label" : "Index Link Min", "step" : 1, "min" : 8, "max" : 72, "target" : ".index-navigation", "showOnlyWhenPresent" : ".show-index-navigation.scale-index-link-font-size .index-navigation" }
 @indexLinkMin: 16px;
 
-// tweak: { "type" : "color", "category" : "Index: Navigation", "title" : "Index Link Color", "label" : "Link Color", "target" : ".index-navigation", "showOnlyWhenPresent" : ".index-navigation" }
+// tweak: { "type" : "color", "category" : "Index: Navigation", "title" : "Index Link Color", "label" : "Link Color", "target" : ".index-navigation", "showOnlyWhenPresent" : ".show-index-navigation .index-navigation" }
 @indexLinkColor: #111111;
 
-// tweak: { "type" : "color", "category" : "Index: Navigation", "title" : "Index Active Link", "label" : "Active Link Color", "target" : ".index-navigation .active-link", "showOnlyWhenPresent" : ".index-link-style-list-inline .index-navigation, .index-link-style-list-stacked .index-navigation" }
+// tweak: { "type" : "color", "category" : "Index: Navigation", "title" : "Index Active Link", "label" : "Active Link Color", "target" : ".index-navigation .active-link", "showOnlyWhenPresent" : ".show-index-navigation.index-link-style-list-inline .index-navigation, .show-index-navigation.index-link-style-list-stacked .index-navigation" }
 @indexLinkActiveColor: #999999;
 
-// tweak: { "type" : "dropdown", "category" : "Index: Navigation", "title" : "Index Link Spacing", "label" : "Link Spacing", "options" : ["Small", "Medium", "Large", "Custom"], "default" : "Medium", "target" : ".index-navigation", "showOnlyWhenPresent" : ".index-navigation" }
+// tweak: { "type" : "dropdown", "category" : "Index: Navigation", "title" : "Index Link Style", "label" : "Link Style", "options" : ["List (inline)", "List (stacked)", "Next (inline)", "Next (stacked)"], "default" : "Next (inline)", "target" : ".index-navigation", "showOnlyWhenPresent" : ".show-index-navigation .index-navigation" }
 
-// tweak: { "type" : "value", "category" : "Index: Navigation", "title" : "Index Link Custom Spacing", "label" : "Custom Link Spacing", "step" : 1, "min" : 0, "max" : 150, "target" : ".index-navigation", "showOnlyWhenPresent" : ".index-link-spacing-custom .index-navigation" }
-@indexLinkSpacing: 20px;
+// tweak: { "type" : "dropdown", "category" : "Index: Navigation", "title" : "Index Link Delimiter Type", "label" : "Link Delimiter", "options" : ["None", "Slash", "Bullet"], "default" : "Slash", "target" : ".index-navigation", "showOnlyWhenPresent" : ".show-index-navigation.index-link-style-list-inline .index-navigation" }
 
-// tweak: { "type" : "dropdown", "category" : "Index: Navigation", "title" : "Index Link Style", "label" : "Link Style", "options" : ["List (inline)", "List (stacked)", "Next (inline)", "Next (stacked)"], "default" : "Next (inline)", "target" : ".index-navigation", "showOnlyWhenPresent" : ".index-navigation" }
+// tweak: { "type" : "value", "category" : "Index: Navigation", "title" : "Index Link Item Spacing", "label" : "Link Spacing", "step" : 0.05, "min" : 0, "max" : 3, "target" : ".index-navigation", "showOnlyWhenPresent" : ".show-index-navigation.index-link-style-list-stacked .index-navigation, .show-index-navigation.index-link-style-next-stacked .index-navigation" }
+@indexLinkItemSpacing: 0em;
 
-// tweak: { "type" : "dropdown", "category" : "Index: Navigation", "title" : "Index Link Delimiter Type", "label" : "Link Delimiter", "options" : ["None", "Slash", "Bullet"], "default" : "Slash", "target" : ".index-navigation", "showOnlyWhenPresent" : ".index-link-style-list-inline .index-navigation" }
+// tweak: { "type" : "checkbox", "category" : "Index: Navigation", "title" : "Show Next Label Only", "label" : "Show Label Only", "active" : true, "target" : ".index-navigation", "showOnlyWhenPresent" : ".show-index-navigation.index-link-style-next-stacked .index-next, .show-index-navigation.index-link-style-next-inline .index-next" }
 
-// tweak: { "type" : "checkbox", "category" : "Index: Navigation", "title" : "Show Next Label Only", "label" : "Show Label Only", "active" : true, "target" : ".index-navigation", "showOnlyWhenPresent" : ".index-link-style-next-stacked .index-next, .index-link-style-next-inline .index-next" }
-
+// tweak: { "type" : "checkbox", "category" : "Index: Navigation", "label" : "Page Transition Animation", "title" : "tweak-page-transition-animation", "active" : true, "target" : ".index-item", "showOnlyWhenPresent" : ".collection-type-index, .index-item-navigation", "js" : true }
 
 /* Mobile: Bar
 ***********************************/
@@ -694,7 +720,9 @@
 
 // tweak: { "type" : "checkbox", "category" : "Mobile: Bar", "label" : "Transparent Mobile Bar", "title" : "tweak-transparent-fixed-mobile-bar", "active" : false, "target" : ".mobile-bar-wrapper", "showOnlyWhenPresent" : ".tweak-mobile-bar-position-top-fixed, .tweak-mobile-bar-position-bottom-fixed" }
 
-// tweak: { "category" : "Mobile: Bar", "label" : "Branding Position", "title" : "tweak-mobile-bar-branding-position", "type" : "dropdown", "options" : [ "Left", "Right" ], "default" : "Left", "target" : ".mobile-bar-wrapper, .mobile-branding-wrapper" }
+// tweak: { "category" : "Mobile: Bar", "label" : "Branding Position", "title" : "tweak-mobile-bar-branding-position", "type" : "dropdown", "options" : [ "Left", "Right", "Center" ], "default" : "Left", "target" : ".mobile-bar-wrapper, .mobile-branding-wrapper" }
+
+// tweak: { "category" : "Mobile: Bar", "label" : "Menu Icon Position", "title" : "tweak-mobile-bar-menu-icon-position", "type" : "dropdown", "options" : [ "Left", "Right" ], "default" : "Right", "target" : ".mobile-bar-wrapper, .mobile-nav-toggle-label", "showOnlyWhenPresent" : ".tweak-mobile-bar-branding-position-center" }
 
 // tweak: { "category" : "Mobile: Bar", "label" : "Logo Width", "title" : "tweak-mobile-bar-branding-logo-width", "type" : "value", "step" : 1, "min" : 20, "max" : 240, "target" : ".mobile-bar-wrapper, .mobile-branding-wrapper", "property" : "width", "showOnlyWhenPresent" : ".mobile-logo-image" }
 @tweak-mobile-bar-branding-logo-width: 80px;
@@ -716,9 +744,9 @@
 // tweak: { "category": "Mobile: Bar", "label" : "Menu Icon Color", "title" : "tweak-mobile-bar-menu-icon-color", "type" : "color", "target" : ".mobile-bar-wrapper, .mobile-nav-toggle-label" }
 @tweak-mobile-bar-menu-icon-color: #111111;
 
-// tweak: { "category" : "Mobile: Bar", "label" : "Tagline Position", "title" : "tweak-mobile-bar-site-tagline-position", "type" : "dropdown", "options" : [ "Hide", "w/ Branding" ], "default" : "Hide", "target" : ".mobile-bar-wrapper, .mobile-site-tagline", "showOnlyWhenPresent" : ".mobile-site-tagline", "js" : true }
+// tweak: { "category" : "Mobile: Bar", "label" : "Tagline Position", "title" : "tweak-mobile-bar-site-tagline-position", "type" : "dropdown", "options" : [ "Hide", "Below Branding", "Beside Branding" ], "default" : "Hide", "target" : ".mobile-bar-wrapper, .mobile-site-tagline", "showOnlyWhenPresent" : ".mobile-site-tagline", "js" : true }
 
-// tweak: { "category": "Mobile: Bar", "label" : "Tagline Font", "title" : "tweak-mobile-bar-site-tagline-font", "type" : "font", "target" : ".mobile-bar-wrapper, .mobile-site-tagline", "showOnlyWhenPresent" : ".tweak-mobile-bar-site-tagline-position-w-branding" }
+// tweak: { "category": "Mobile: Bar", "label" : "Tagline Font", "title" : "tweak-mobile-bar-site-tagline-font", "type" : "font", "target" : ".mobile-bar-wrapper, .mobile-site-tagline", "showOnlyWhenPresent" : ".tweak-mobile-bar-site-tagline-position-below-branding, .tweak-mobile-bar-site-tagline-position-beside-branding" }
 .tweak-mobile-bar-site-tagline-font {
   font-family: Arial, sans-serif;
   font-weight: 400;
@@ -729,10 +757,10 @@
   text-transform: uppercase;
 }
 
-// tweak: { "category": "Mobile: Bar", "label" : "Tagline Color", "title" : "tweak-mobile-bar-site-tagline-color", "type" : "color", "target" : ".mobile-bar-wrapper, .mobile-site-tagline", "showOnlyWhenPresent" : ".tweak-mobile-bar-site-tagline-position-w-branding" }
+// tweak: { "category": "Mobile: Bar", "label" : "Tagline Color", "title" : "tweak-mobile-bar-site-tagline-color", "type" : "color", "target" : ".mobile-bar-wrapper, .mobile-site-tagline", "showOnlyWhenPresent" : ".tweak-mobile-bar-site-tagline-position-below-branding, .tweak-mobile-bar-site-tagline-position-beside-branding" }
 @tweak-mobile-bar-site-tagline-color: #111111;
 
-// tweak: { "type" : "value", "category" : "Mobile: Bar", "label" : "Tagline Spacing", "title" : "Mobile Bar Tagline Spacing", "step" : 1, "min" : 0, "max" : 50, "target" : ".mobile-bar-wrapper, .mobile-site-tagline", "showOnlyWhenPresent" : ".tweak-mobile-bar-site-tagline-position-w-branding" }
+// tweak: { "type" : "value", "category" : "Mobile: Bar", "label" : "Tagline Spacing", "title" : "Mobile Bar Tagline Spacing", "step" : 1, "min" : 0, "max" : 50, "target" : ".mobile-bar-wrapper, .mobile-site-tagline", "showOnlyWhenPresent" : ".tweak-mobile-bar-site-tagline-position-below-branding, .tweak-mobile-bar-site-tagline-position-beside-branding" }
 @tweak-mobile-bar-site-tagline-spacing: 6px;
 
 
