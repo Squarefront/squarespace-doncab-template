@@ -3,9 +3,6 @@
 
 {.section collection}
   <div sqs-controller="Template.Controllers.BannerController" class="page-banner-wrapper {.if @firstImg}page-banner-has-image{.end}" {.if @firstImg}data-suggested-bg-color-promoted="#{@firstImg.colorData.suggestedBgColor}"{.end} {.if @pageThumb}data-suggested-bg-color-thumbnail="#{@pageThumb.colorData.suggestedBgColor}"{.end} data-collection-id="{collection.id}" data-edit-main-image="Background">
-    <!-- <div class="page-banner-image-container collection-promoted-image-container hide-collection-image" >
-      <img class="page-banner-image js-page-banner-image loading" {@firstImg|image-meta} data-load="false" />
-    </div> -->
 
     <div class="page-banner-image-container collection-thumbnail-image-container hide-collection-image" data-edit-main-image="Background">
       <img class="page-banner-image js-page-banner-image loading" {@pageThumb|image-meta} data-load="false" />
@@ -13,6 +10,14 @@
 
     <div class="page-text-wrapper hide clearfix">
       <h1 class="page-title"><span data-content-field="title">{title}</span></h1>
+
+      {# [TMP-4578] Placeholder code for category display}
+			<!-- {.if categories}
+				<div class="project-page-category-wrapper">
+		  		<span class="project-page-category">{.repeated section categories}{@|safe}{.alternates with}, {.end}</span>
+		  	</div>
+			{.end} -->
+
       <div class="page-description" data-content-field="description">{description}</div>
     </div>
   </div>
