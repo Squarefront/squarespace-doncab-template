@@ -5,7 +5,7 @@
     {.collection?}
       {.index?}
       <div class="nav-item index{.if active} active{.end}{.section collection}{.if homepage} homepage{.end}{.end}" id="id-{collection.id}">
-        <a href="{collection.fullUrl}">
+        <a href="{collection.fullUrl}" class="nav-item-{collection.typeName}">
           <span>{collection.navigationTitle}</span>
         </a>
       </div>
@@ -20,7 +20,7 @@
           {.repeated section items}
             {.collection?}
             <div class="collection{.if active} active{.end}" id="id-{collection.id}">
-              <a href="{collection.fullUrl}">
+              <a href="{collection.fullUrl}" class="nav-item-{collection.typeName}">
                 <span>{collection.navigationTitle}</span>
               </a>
             </div>
@@ -40,7 +40,7 @@
 
         {.section collection}
         <div class="nav-item collection{.if active} active{.end}{.if homepage} homepage{.end}" id="id-{id}">
-          <a href="{fullUrl}">
+          <a href="{fullUrl}" class="nav-item-{collection.typeName}">
             <span>{navigationTitle}</span>
           </a>
         </div>
