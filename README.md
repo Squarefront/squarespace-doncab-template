@@ -38,6 +38,21 @@ The use-case for these are quite impressive. Essentially you can store a JSON va
 
 This is great for storing values that you want to take deeper into scope.
 
+### Navigation Tags without Templates
+This is the first template framework that has demonstrated the usage of a navigation tag without a navigation template.
+
+> Example: https://github.com/Squarefront/squarespace-doncab-template/blob/master/site.region#L10
+
+This creates some really great uses all across the board. Instead of building a dedicated .block template for your navigation, you can scope into a navigation tag using this method.
+
+#### How it works
+If you've used navigation tags before, simply remove the template attribute and create a closing navigation tag like below. Within the navigation tag you will scope into the navigationId you've set. The following example could exist almost anywhere in your template.
+
+```html
+<squarespace:navigation navigationId="mainNav">
+    <script>console.log({@|json-pretty});</script>
+</squarespace:navigation>
+```
 
 
 ## License and Terms
